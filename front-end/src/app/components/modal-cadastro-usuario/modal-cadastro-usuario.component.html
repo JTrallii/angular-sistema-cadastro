@@ -1,0 +1,74 @@
+
+
+
+<section *ngIf="aberta">
+  <div>
+    <div
+      class = "background__modal"
+      (click)="aoFechar.emit(); resetFormulario();"
+      aria-hidden="true"
+    ></div>
+    <div class = "janela__modal">
+      <button class = "fechar__modal" (click)="aoFechar.emit(); resetFormulario();">
+        X
+      </button>
+      <div
+        class = "modal__container display align"
+      >
+        <img
+          src="../../../assets/imagem_cadastro.png"
+          alt="Imagem Cadastro"
+          class = "modal__container_img"
+        />
+        <p class = "modal__container_p">CADASTRO</p>
+        <form
+          class = "borda modal__container_form"
+          onSubmit={handleSubmit}
+        >
+          <label htmlFor="email" class = "display">
+            Nome:
+            <input
+              type="text"
+              name="name"
+              id="name"
+              data-test="name-input"
+              placeholder="Digite seu nome"
+              [ngClass]="buttonClasseNome"
+              [(ngModel)]="nome"
+            />
+            <span class = "error">{{ errorNome }}</span>
+          </label>
+          <label htmlFor="senha" class = "display">
+            E-mail:
+            <input
+              type="email"
+              name="email"
+              id="email"
+              data-test="email-input"
+              placeholder="Digite seu email"
+              [ngClass]="buttonClasseEmail"
+              [(ngModel)]="email"
+            />
+            <span class = "error">{{ errorEmail }}</span>
+          </label>
+          <label htmlFor="senha" class = "display">
+            Senha:
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              data-test="senha-input"
+              placeholder="Digite sua senha"
+              [ngClass]="buttonClasseSenha"
+              [(ngModel)]="senha"
+            />
+            <span class = "error">{{ errorSenha }}</span>
+          </label>
+          <div class = "display align">
+            <button type="submit">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

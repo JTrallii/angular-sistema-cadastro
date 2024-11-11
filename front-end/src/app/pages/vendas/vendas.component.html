@@ -1,0 +1,27 @@
+
+
+
+<section class="container">
+  <h1>CONTROLE DE VENDAS</h1>
+  <div class="container__botao">
+    <app-botao-listar>LISTAR VENDAS</app-botao-listar>
+    <app-botao-listar>EFETUAR VENDAS</app-botao-listar>
+  </div>
+  <div class="container__vendas">
+    <div class="container__vendas__descricao_estoque">
+      <label for="estoque">ESTOQUE</label>
+      <input type="text" placeholder="Estoque" />
+    </div>
+    <div class="container__vendas__descricao_quantidade">
+      <label for="quantidade">QUANTIDADE</label>
+      <input type="text" placeholder="Quantidade" />
+    </div>
+    <div class="container__vendas__descricao_produto">
+      <app-pesquisar-produto></app-pesquisar-produto>
+    </div>
+    <div class="container__vendas__descricao_preco">
+      <label for="preco">PREÇO</label>
+      <input type="text" placeholder="Valor do produto" />
+    </div>
+  </div>
+</section>

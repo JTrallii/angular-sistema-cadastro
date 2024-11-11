@@ -1,0 +1,58 @@
+
+
+<section *ngIf="aberta" class="modal">
+  <div class="background__modal" (click)="aoFechar.emit(); resetFormulario();" aria-label="true"></div>
+  <div class="janela__modal">
+    <button
+      class="fechar__modal"
+      (click)="aoFechar.emit(); resetFormulario();"
+    >
+      X
+    </button>
+    <div
+      class="modal__container display align"
+    >
+      <img
+        src="../../../assets/imagem_login.png"
+        alt="Imagem Login"
+        class="modal__container_img"
+      />
+      <p class="modal__container_p">LOGIN</p>
+      <form
+        class="borda modal__container_form"
+        (submit)="handleSubmit($event)"
+      >
+        <label htmlFor="email" class="display">
+          E-mail:
+          <input
+            type="email"
+            name="email"
+            id="email"
+            data-test="email-input"
+            placeholder="Digite seu email"
+            [(ngModel)]="email"
+            required
+          />
+        </label>
+        <label htmlFor="senha" class="display">
+          Senha:
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            data-test="senha-input"
+            placeholder="Digite sua senha"
+            [(ngModel)]="senha"
+            required
+          />
+          <span class="error">{{ error }}</span>
+        </label>
+        <div class="display align">
+          <button
+          type="submit"
+          >Acessar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

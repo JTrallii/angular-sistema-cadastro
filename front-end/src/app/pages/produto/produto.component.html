@@ -1,0 +1,65 @@
+<section class="container">
+  <h1>CADASTRO DE PRODUTOS</h1>
+  <form action="" class="">
+    <div class="container__produto">
+      <div class="produto">
+        <label class="block" for="">PRODUTO:</label>
+        <input class="input" type="text" name="produto" />
+      </div>
+      <div class="cdg_barras">
+        <label class="block" for="cdg_barras">CODIGO DE BARRAS:</label>
+        <input class="input" type="text" name="cdg_barras" />
+      </div>
+    </div>
+    <div class="container__fornecedor">
+      <div class="fornecedor">
+        <label class="block" for="fornecedor">FORNECEDOR:</label>
+        <input class="input" type="text" name="fornecedor" />
+      </div>
+      <div class="und_medida">
+        <label class="block" for="und_medida">UN. DE MEDIDA:</label>
+        <input class="input" type="text" name="und_medida" />
+      </div>
+    </div>
+    <div class="container__quantidade">
+      <div class="qtd_minima">
+        <label class="block" for="qtd_minima">QUANTIDADE MÍNIMA:</label>
+        <input class="input" type="text" name="qtd_minima" />
+      </div>
+      <div class="quantidade">
+        <label class="block" for="quantidade">QUANTIDADE:</label>
+        <input class="input" type="text" name="quantidade" />
+      </div>
+      <div class="peso">
+        <label class="block" for="peso">PESO:</label>
+        <input class="input" type="text" name="peso" />
+      </div>
+    </div>
+    <div class="container__preco">
+      <div class="qtd_minima">
+        <label class="block" for="container__preco">CUSTO DE COMPRA:</label>
+        <input class="input" type="text" name="container__preco" />
+      </div>
+      <div class="quantidade">
+        <label class="block" for="quantidade">CUSTO DE VENDA:</label>
+        <input class="input" type="text" name="quantidade" />
+      </div>
+      <div class="peso">
+        <label class="block" for="peso">CATEGORIA:</label>
+        <input class="input" type="text" name="peso" />
+      </div>
+    </div>
+    <div class="container__descricao">
+      <div class="descricao">
+        <label class="block" for="descricao">DESCRIÇÃO DO PRODUTO:</label>
+        <textarea class="textarea" name="" id="descricao"></textarea>
+      </div>
+    </div>
+
+    <div class="container__botoes">
+      <app-botao-salvar [tipo]="salvar"> SALVAR </app-botao-salvar>
+      <app-botao-salvar [tipo]="atualizar"> ATUALIZAR </app-botao-salvar>
+      <app-botao-salvar [tipo]="excluir"> EXCLUIR </app-botao-salvar>
+    </div>
+  </form>
+</section>

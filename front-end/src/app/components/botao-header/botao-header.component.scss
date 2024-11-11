@@ -1,0 +1,27 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+
+.btn__primario {
+  background: #47a138;
+  padding: 14px 12px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.btn__secundario {
+  background: transparent;
+  padding: 14px 12px;
+  border: 2px solid #47a138;
+  border-radius: 8px;
+  color: #47a138;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+
+.header {
+  grid-area: header;
+}
+
+.container {
+  background-color: $cor-azul-meia-noite;
+  height: 100px;
+  padding: 0 5rem;
+  display: flex;
+  align-items: center;
+
+
+  &__menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__logo {
+      width: 130px;
+    }
+
+    &__logado {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0 5rem;
+
+      &__img_login {
+        width: 50px;
+      }
+
+      &__login {
+        color: $cor-branco;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

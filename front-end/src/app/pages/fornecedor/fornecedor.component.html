@@ -1,0 +1,79 @@
+<section class="container">
+  <h1>CADASTRO DE FORNECEDORES</h1>
+  <form action="" class="">
+    <div class="container__fornecedor">
+      <div class="fornecedor">
+        <label class="block" for="">NOME DO FORNECEDOR:</label>
+        <input class="input" type="text" name="fornecedor" />
+      </div>
+    </div>
+    <div class="container__nome_fantasia">
+      <div class="nome_fantasia">
+        <label class="block" for="nome_fantasia">NOME FANTASIA:</label>
+        <input class="input" type="text" name="nome_fantasia" />
+      </div>
+      <div class="cnpj">
+        <label class="block" for="cnpj">CNPJ:</label>
+        <input class="input" type="text" name="cnpj" />
+      </div>
+    </div>
+    <div class="container__endereco">
+      <div class="endereco">
+        <label class="block" for="endereco">ENDEREÇO:</label>
+        <input class="input" type="text" name="endereco" />
+      </div>
+      <div class="numero">
+        <label class="block" for="numero">NÚMERO:</label>
+        <input class="input" type="text" name="numero" />
+      </div>
+    </div>
+    <div class="container__complemento">
+      <div class="complemento">
+        <label class="block" for="complemento">COMPLEMENTO:</label>
+        <input class="input" type="text" name="complemento" />
+      </div>
+    </div>
+    <div class="container__bairro">
+      <div class="bairro">
+        <label class="block" for="bairro">BAIRRO:</label>
+        <input class="input" type="text" name="bairro" />
+      </div>
+      <div class="cidade">
+        <label class="block" for="cidade">CIDADE:</label>
+        <input class="input" type="text" name="cidade" />
+      </div>
+      <div class="cep">
+        <label class="block" for="cep">CEP:</label>
+        <input class="input" type="text" name="cep" />
+      </div>
+    </div>
+    <div class="container__telefone">
+      <div class="telefone">
+        <label class="block" for="telefone">TELEFONE:</label>
+        <input class="input" type="text" name="telefone" />
+      </div>
+      <div class="celular">
+        <label class="block" for="celular">CELULAR:</label>
+        <input class="input" type="text" name="celular" />
+      </div>
+    </div>
+    <div class="container__email">
+      <div class="email1">
+        <label class="block" for="email1">EMAIL 1:</label>
+        <input class="input" type="text" name="email1" />
+      </div>
+      <div class="email2">
+        <label class="block" for="email2">EMAIL 2:</label>
+        <input class="input" type="text" name="email2" />
+      </div>
+    </div>
+
+
+    <div class="container__botoes">
+      <app-botao-salvar [tipo]="salvar"> SALVAR </app-botao-salvar>
+      <app-botao-salvar [tipo]="atualizar"> ATUALIZAR </app-botao-salvar>
+      <app-botao-salvar [tipo]="excluir"> EXCLUIR </app-botao-salvar>
+    </div>
+  </form>
+</section>
+

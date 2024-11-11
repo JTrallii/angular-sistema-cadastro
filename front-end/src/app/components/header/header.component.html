@@ -1,0 +1,44 @@
+
+
+<header class="container header">
+  <div class="container__menu">
+    <img src="/assets/logo.png" alt="logo" class="container__menu__logo"/>
+    <section *ngIf="!usuarioLogado; else logado">
+      <div>
+        <app-botao-header
+          [acaoBotao]="login"
+          [tipo]="primario"
+          (onClick)="abrirModalLogin()"
+        >
+          Fazer Login
+        </app-botao-header>
+
+        <app-modal-login-usuario
+          [aberta]="modalLoginUsuario"
+          (aoFechar)="fecharModalLogin()"
+          (aoEfetuarLogin)="aoEfetuarLogin()"
+        ></app-modal-login-usuario>
+
+        <app-botao-header
+          [acaoBotao]="cadastro"
+          [tipo]="secundario"
+          (onClick)="abrirModalCadastro()"
+        >
+          Fazer Cadastro
+        </app-botao-header>
+
+        <app-modal-cadastro-usuario
+          [aberta]="modalCadastroUsuario"
+          (aoFechar)="fecharModalCadastro()"
+        ></app-modal-cadastro-usuario>
+      </div>
+    </section>
+    <ng-template #logado>
+      <div class="container__menu__logado">
+        <img src="../../../assets/circle-user-round.svg" alt="login" class="container__menu__logado__img_login" />
+        <span class="container__menu__logado__login">Olá, {{ usuario }}</span>
+        <button (click)="aoEfetuarLogout()" class="botao botao-secundario">Sair</button>
+      </div>
+    </ng-template>
+  </div>
+</header>

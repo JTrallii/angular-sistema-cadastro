@@ -1,0 +1,19 @@
+
+
+
+<div class="container">
+  <label for="produto">PRODUTO</label>
+  <input
+    type="text"
+    id="produto"
+    [(ngModel)]="inputProduto"
+    (input)="onInputChange()"
+    placeholder="Digite o nome do produto..."
+  />
+
+  <ul *ngIf="produtosFiltrados.length > 0">
+    <li *ngFor="let produto of produtosFiltrados" (click)="selecionarProduto(produto)">
+      {{ produto.nome }}
+    </li>
+  </ul>
+</div>

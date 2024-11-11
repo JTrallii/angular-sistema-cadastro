@@ -1,0 +1,29 @@
+@import "../style/abstract/media-queries";
+@import "../style/abstract/mixins";
+@import "../style/abstract/variaveis";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main__container {
+  display: flex;
+  flex: 1;
+}
+
+.main__container__menu {
+  width: 300px;
+  background-color: #f0f0f0;
+}
+
+.main__container__menu_rotas {
+  flex: 1;
+  padding: 20px;
+  background-color: #EBEBEB;
+}
+//O main__container usa flex: 1 para expandir ao longo do eixo vertical (porque o contêiner .container está configurado como column),
+//preenchendo a altura restante entre o cabeçalho e o rodapé.
+//O main__container__menu_rotas usa flex: 1 para expandir horizontalmente ao lado do
+//menu (pois o contêiner main__container está configurado como row), ocupando o espaço restante ao lado do nav.

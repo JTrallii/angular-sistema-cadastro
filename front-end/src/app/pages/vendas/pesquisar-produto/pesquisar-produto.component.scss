@@ -1,0 +1,23 @@
+@import "../../../../style/abstract/media-queries";
+@import "../../../../style/abstract/mixins";
+@import "../../../../style/abstract/variaveis";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    box-sizing: border-box;
+    border: none;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+}

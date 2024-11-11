@@ -1,0 +1,110 @@
+
+
+
+.display {
+  display: flex;
+}
+
+.align {
+  justify-content: center;
+  align-items: center;
+}
+
+.background__modal {
+  position: fixed;
+  z-index: 1;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: rgba(101, 101, 101, 0.85);
+}
+
+.fechar__modal {
+  background: transparent;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  right: 32px;
+  top: 32px;
+}
+
+.janela__modal {
+  position: fixed;
+  z-index: 1;
+  padding: 64px;
+  width: 450px;
+  background: #e4ede3;
+  box-shadow: 4px 4px 24px -4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal__container {
+  flex-direction: column;
+}
+
+.modal__container_img {
+  width: 250px;
+}
+
+.modal__container_p {
+  text-align: center;
+  color: #47a138;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+}
+
+.modal__container_img,
+.modal__container_p {
+  margin-bottom: 1rem;
+}
+
+.modal__container_form {
+  width: 300px;
+}
+
+.modal__container_form label {
+  flex-direction: column;
+  color: #000;
+  font-size: 16px;
+  line-height: 120%;
+  margin: 1rem 0;
+  color: #47a138;
+}
+
+.modal__container_form input {
+  margin: 0.2rem 0;
+  height: 1.7rem;
+  border: transparent;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.display button {
+  width: 100%;
+  height: 40px;
+  color: #47a138;
+  background-color: var(--branco);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: transparent;
+  border-radius: 5px;
+  border: 1px solid #47a138;
+  transition: 0.4s;
+}
+
+.display button:hover {
+  background-color: #47a138;
+  color: var(--branco);
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}

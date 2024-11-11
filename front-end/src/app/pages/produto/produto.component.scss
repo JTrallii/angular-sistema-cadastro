@@ -1,0 +1,80 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    background-color: $cor-prata-claro;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  &__produto,
+  &__fornecedor,
+  &__quantidade,
+  &__preco, &__descricao {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  label {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  &__botoes {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.produto,
+.fornecedor {
+  width: 80%;
+}
+
+.cdg_barras,
+.und_medida {
+  width: 20%;
+}
+
+.qtd_minima,
+.quantidade,
+.peso {
+  width: 33%;
+}
+
+.block {
+  display: block;
+}
+
+.input, .textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 3px solid $cor-cinza-escuro;
+  height: 45px;
+}
+
+.descricao {
+  width: 100%;
+}
+
+.textarea {
+  height: 150px;
+}

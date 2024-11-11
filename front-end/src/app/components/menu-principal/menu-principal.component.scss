@@ -1,0 +1,30 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+.container {
+  width: 300px;
+  height: 100%;
+  background-color: $cor-branco;
+
+  &__navegacao__lista {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+
+    &__link {
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: $cor-azul-meia-noite;
+      font-weight: 900;
+      padding: 0.8rem;
+      transition: 0.4s;
+
+      &:hover {
+        color: $cor-branco;
+        background-color: $cor-azul-meia-noite;
+      }
+    }
+  }
+}

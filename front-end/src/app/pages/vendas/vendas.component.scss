@@ -1,0 +1,61 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+.container {
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+  }
+
+  &__botao {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__vendas {
+    background-color: $cor-prata-claro;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+
+    &__descricao_estoque,
+    &__descricao_quantidade,
+    &__descricao_produto,
+    &__descricao_preco {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+
+      input {
+        box-sizing: border-box;
+        border: none;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      &__input_estoque {
+        width: 20%;
+      }
+    }
+
+    &__descricao_estoque,
+    &__descricao_quantidade {
+      width: 8%;
+    }
+
+    &__descricao_produto {
+      width: 70%;
+    }
+
+    &__descricao_preco {
+      width: 14%;
+    }
+  }
+}
