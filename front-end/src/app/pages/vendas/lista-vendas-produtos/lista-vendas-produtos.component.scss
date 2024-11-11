@@ -1,0 +1,68 @@
+@import "../../../../style/abstract/media-queries";
+@import "../../../../style/abstract/mixins";
+@import "../../../../style/abstract/variaveis";
+
+
+//:host é usado para aplicar estilos diretamente ao elemento raiz do componente
+:host {
+  display: block; /* Necessário para que o Angular reconheça a largura */
+  width: 100%;
+}
+
+section h2{
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  width: 100%;
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+
+  &__table {
+    width: 50%;
+    text-align: center;
+    background-color: $cor-prata-claro;
+
+
+
+    &__head {
+      font-size: 1.5rem;
+
+
+      &__descricao {
+        width: 60%;
+        padding: 1rem;
+      }
+
+      &__quantidade, &__valor {
+        width: 20%;
+      }
+
+      th {
+        position: sticky; /* Faz o cabeçalho ficar fixo */
+        top: 0; /* Fica fixo no topo */
+        background-color: $cor-prata-claro; /* Fundo do cabeçalho */
+        z-index: 1; /* Garante que o cabeçalho esteja acima do corpo da tabela */
+      }
+    }
+
+    &__body tr:nth-child(odd) {
+        background-color: $cor-cinza-escuro;
+      }
+
+    &__body tr td {
+      padding: 0.8rem;
+      border-top: 2px solid $cor-azul-meia-noite;
+      color: $cor-azul-meia-noite;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+
+
