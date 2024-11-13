@@ -1,6 +1,3 @@
-
-
-
 <section class="">
   <h2 class="">LISTA DE VENDAS</h2>
   <div class="container">
@@ -12,56 +9,11 @@
           <th class="container__table__head__valor">Valor</th>
         </tr>
       </thead>
-      <tbody class="container__table__body">
-        <tr>
-          <td>1</td>
-          <td>Smart TV</td>
-          <td>R$ 150,00</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Geladeira</td>
-          <td>R$ 1500,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Fogão</td>
-          <td>R$ 3020,00</td>
+      <tbody *ngIf="listaDeProdutos.length > 0" class="container__table__body">
+        <tr *ngFor="let produto of listaDeProdutos">
+          <td>{{ quantidade }}</td>
+          <td>{{ produto.nome }}</td>
+          <td>R$ {{ produto.preco.toFixed(2) }}</td>
         </tr>
       </tbody>
     </table>

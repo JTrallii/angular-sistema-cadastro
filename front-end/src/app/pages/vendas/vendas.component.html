@@ -10,22 +10,22 @@
     <div class="container__vendas">
       <div class="container__vendas__descricao_estoque">
         <label for="estoque">ESTOQUE</label>
-        <input type="text" placeholder="Estoque" />
+        <input type="text" placeholder="Estoque" [(ngModel)]="estoque" />
       </div>
       <div class="container__vendas__descricao_quantidade">
         <label for="quantidade">QUANTIDADE</label>
-        <input type="text" placeholder="Quantidade" />
+        <input type="text" placeholder="Quantidade" [(ngModel)]="quantidade" />
       </div>
       <div class="container__vendas__descricao_produto">
-        <app-pesquisar-produto></app-pesquisar-produto>
+        <app-pesquisar-produto (produtoSelecionado)="onProdutoSelecionado($event)"></app-pesquisar-produto>
       </div>
       <div class="container__vendas__descricao_preco">
         <label for="preco">PREÇO</label>
-        <input type="text" placeholder="Valor do produto" />
+        <input type="text" placeholder="Valor do produto" [(ngModel)]="precoFormatado" />
       </div>
     </div>
   </div>
   <div class="container__lista">
-    <app-lista-vendas-produtos></app-lista-vendas-produtos>
+    <app-lista-vendas-produtos [produto]="produtoSelecionado" [quantidade]="quantidade"></app-lista-vendas-produtos>
   </div>
 </section>

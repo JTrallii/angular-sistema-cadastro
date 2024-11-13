@@ -11,7 +11,7 @@
     placeholder="Digite o nome do produto..."
   />
 
-  <ul *ngIf="produtosFiltrados.length > 0">
+  <ul *ngIf="produtosFiltrados.length > 0" class="container__lista">
     <li *ngFor="let produto of produtosFiltrados" (click)="selecionarProduto(produto)">
       {{ produto.nome }}
     </li>
