@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output, SimpleChanges } from "@angular/core";
 import { Produto } from "../../../utils/interface/IProduto";
 import { FormsModule } from "@angular/forms";
 
@@ -22,7 +22,16 @@ export class PesquisarProdutoComponent {
 
   inputProduto: string = "";
   produtosFiltrados: Produto[] = [];
-  @Output() produtoSelecionado = new EventEmitter<Produto>();
+  @Input() produtoSelecionado: Produto | null = null;
+  @Output() produtoSelecionadoEmit = new EventEmitter<Produto>();
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['produtoSelecionado'] && this.produtoSelecionado === null) {
+      // Limpa o inputProduto quando produtoSelecionado for null
+      this.inputProduto = '';
+    }
+  }
+
 
   onInputChange() {
     this.produtosFiltrados = this.produtos.filter(produto =>
@@ -32,7 +41,7 @@ export class PesquisarProdutoComponent {
 
   selecionarProduto(produto: Produto) {
     this.inputProduto = produto.nome;
-    this.produtoSelecionado.emit(produto);
+    this.produtoSelecionadoEmit.emit(produto);
     this.produtosFiltrados = []; // Limpa a lista após a seleção
   }
 

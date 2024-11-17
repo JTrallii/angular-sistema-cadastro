@@ -1,3 +1,7 @@
+
+
+
+
 <section class="">
   <h2 class="">LISTA DE VENDAS</h2>
   <div class="container">
@@ -6,14 +10,16 @@
         <tr>
           <th class="container__table__head__quantidade">Quantidade</th>
           <th class="container__table__head__descricao">Descrição</th>
-          <th class="container__table__head__valor">Valor</th>
+          <th class="container__table__head__valor_und">Valor Unitário</th>
+          <th class="container__table__head__valor_total">Valor dos Itens</th>
         </tr>
       </thead>
-      <tbody *ngIf="listaDeProdutos.length > 0" class="container__table__body">
-        <tr *ngFor="let produto of listaDeProdutos">
-          <td>{{ quantidade }}</td>
-          <td>{{ produto.nome }}</td>
-          <td>R$ {{ produto.preco.toFixed(2) }}</td>
+      <tbody *ngIf="listaDeCompras.length > 0" class="container__table__body">
+        <tr *ngFor="let produto of listaDeCompras">
+          <td>{{ produto.quantidade }}</td>
+          <td>{{ produto.produto.nome }}</td>
+          <td>R$ {{ produto.produto.preco.toFixed(2) }}</td>
+          <td>R$ {{ produto.valor_total_item.toFixed(2) }}</td>
         </tr>
       </tbody>
     </table>

@@ -1,29 +1,45 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Produto } from '../../../utils/interface/IProduto';
+import {
+  ItemDeCompra,
+  ProdutoSimplificado,
+} from '../../../utils/interface/IProduto';
 import { CommonModule } from '@angular/common';
+import { ListaCompra } from '../../../utils/interface/IListaCompra';
 
 @Component({
   selector: 'app-lista-vendas-produtos',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './lista-vendas-produtos.component.html',
-  styleUrl: './lista-vendas-produtos.component.scss'
+  styleUrl: './lista-vendas-produtos.component.scss',
 })
 export class ListaVendasProdutosComponent {
-  @Input() produto: Produto | null = null;
-  @Input() quantidade: number = 0;
+  @Input() produto: ProdutoSimplificado | null = null;
+  @Input() quantidadeDoItem: number = 0;
+  valor_total_item: number = 0;
 
-
-  listaDeProdutos: Produto[] = []; // Lista para armazenar os produtos
+  listaDeCompras: ListaCompra[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
-    //changes['produto'] verifica se houve alguma alteração específica na propriedade @Input chamada produto.
-    if (changes['produto'] && this.produto) {
-      // Verifica se o produto é diferente de null e adiciona à lista
-      
-      this.listaDeProdutos.push(this.produto);
+    if (changes['produto'] && this.produto && this.quantidadeDoItem > 0) {
+      const itemDaLista: ListaCompra = {
+        produto: { ...this.produto }, // Cria uma cópia do produto
+        quantidade: this.quantidadeDoItem,
+        valor_total_item: this.quantidadeDoItem * this.produto.preco,
+      };
+
+      this.listaDeCompras.push(itemDaLista);
+
+      // Resetar o estado local após adicionar o produto à lista
+      this.produto = null;
+      this.quantidadeDoItem = 0;
     }
+  }
+
+  calcularTotalCompra(): number {
+    return this.listaDeCompras.reduce(
+      (total, item) => total + item.valor_total_item,
+      0
+    );
   }
 }

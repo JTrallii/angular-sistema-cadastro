@@ -24,23 +24,23 @@ section h2{
 
 
   &__table {
-    width: 50%;
+    width: 65%;
     text-align: center;
     background-color: $cor-prata-claro;
 
 
 
     &__head {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
 
 
       &__descricao {
-        width: 60%;
+        width: 55%;
         padding: 1rem;
       }
 
-      &__quantidade, &__valor {
-        width: 20%;
+      &__quantidade, &__valor_und, &__valor_total {
+        width: 15%;
       }
 
       th {

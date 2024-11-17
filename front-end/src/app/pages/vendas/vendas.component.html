@@ -10,14 +10,17 @@
     <div class="container__vendas">
       <div class="container__vendas__descricao_estoque">
         <label for="estoque">ESTOQUE</label>
-        <input type="text" placeholder="Estoque" [(ngModel)]="estoque" />
+        <input type="text" placeholder="Estoque" [(ngModel)]="estoque" readonly/>
       </div>
       <div class="container__vendas__descricao_quantidade">
         <label for="quantidade">QUANTIDADE</label>
-        <input type="text" placeholder="Quantidade" [(ngModel)]="quantidade" />
+        <input type="number" placeholder="Quantidade" [(ngModel)]="quantidade" (ngModelChange)="setQuantidade($event)" />
       </div>
       <div class="container__vendas__descricao_produto">
-        <app-pesquisar-produto (produtoSelecionado)="onProdutoSelecionado($event)"></app-pesquisar-produto>
+        <app-pesquisar-produto [produtoSelecionado]="produtoSelecionado" (produtoSelecionadoEmit)="onProdutoSelecionado($event)"></app-pesquisar-produto>
+        <div *ngIf="quantidadeMaior" class="container__vendas__descricao_produto__error_mensagem">
+          <p>A quantidade não pode ser 0 ou maior que o estoque.</p>
+        </div>
       </div>
       <div class="container__vendas__descricao_preco">
         <label for="preco">PREÇO</label>
@@ -25,7 +28,11 @@
       </div>
     </div>
   </div>
+  <div class="container__botao">
+    <app-botao-salvar (click)="adicionarProduto()">Adicionar o produto</app-botao-salvar>
+  </div>
+
   <div class="container__lista">
-    <app-lista-vendas-produtos [produto]="produtoSelecionado" [quantidade]="quantidade"></app-lista-vendas-produtos>
+    <app-lista-vendas-produtos [produto]="produto" [quantidadeDoItem]="quantidadeDoItem"></app-lista-vendas-produtos>
   </div>
 </section>

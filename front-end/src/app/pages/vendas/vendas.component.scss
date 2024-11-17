@@ -5,6 +5,10 @@
 .container {
   width: 100%;
 
+  &__botao {
+    margin-top: 1rem;
+  }
+
   h1 {
     font-size: 2rem;
     font-weight: 900;
@@ -57,6 +61,12 @@
 
     &__descricao_produto {
       width: 70%;
+
+      &__error_mensagem {
+        color: red;
+        margin-top: 0.8rem;
+        font-size: 1.2rem;
+      }
     }
 
     &__descricao_preco {
@@ -72,3 +82,5 @@
     align-items: end;
   }
 }
+
+
