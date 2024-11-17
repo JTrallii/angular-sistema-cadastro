@@ -27,6 +27,7 @@ export class VendasComponent {
   preco: number = 0; // Armazena o preço do produto
   quantidadeMaior: boolean = false;
   quantidadeDoItem: number = 0;
+  totalCompra: number = 0;
 
   produtoSelecionado: Produto | null = null;
 
@@ -76,5 +77,9 @@ export class VendasComponent {
       this.estoque = 0;
       this.preco = 0;
     }
+  }
+
+  atualizarTotalCompra(valorAtualizado: number) {
+    this.totalCompra = Number(valorAtualizado); // Recebe o valor atualizado do filho
   }
 }

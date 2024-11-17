@@ -29,10 +29,17 @@
     </div>
   </div>
   <div class="container__botao">
-    <app-botao-salvar (click)="adicionarProduto()">Adicionar o produto</app-botao-salvar>
+    <app-botao-salvar (click)="adicionarProduto()">ADICIONAR O PRODUTO</app-botao-salvar>
   </div>
 
   <div class="container__lista">
-    <app-lista-vendas-produtos [produto]="produto" [quantidadeDoItem]="quantidadeDoItem"></app-lista-vendas-produtos>
+    <div class="container__lista__compras">
+      <app-lista-vendas-produtos (valorTotalCompraEmit)="atualizarTotalCompra($event)" [produto]="produto" [quantidadeDoItem]="quantidadeDoItem"></app-lista-vendas-produtos>
+    </div>
+    <div class="container__lista__valor_compras">
+      <h3>VALOR TOTAL DAS COMPRAS</h3>
+      <p>R$ {{ totalCompra | number: "1.2-2" }}</p>
+      <app-botao-salvar (click)="adicionarProduto()">FINALIZAR VENDA</app-botao-salvar>
+    </div>
   </div>
 </section>

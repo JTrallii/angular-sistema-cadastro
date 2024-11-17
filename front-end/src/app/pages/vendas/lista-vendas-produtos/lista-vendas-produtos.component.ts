@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import {
   ItemDeCompra,
   ProdutoSimplificado,
@@ -16,7 +16,10 @@ import { ListaCompra } from '../../../utils/interface/IListaCompra';
 export class ListaVendasProdutosComponent {
   @Input() produto: ProdutoSimplificado | null = null;
   @Input() quantidadeDoItem: number = 0;
+  @Output() valorTotalCompraEmit = new EventEmitter<number>();
   valor_total_item: number = 0;
+  valor_total_compra: number = 0;
+
 
   listaDeCompras: ListaCompra[] = [];
 
@@ -27,6 +30,9 @@ export class ListaVendasProdutosComponent {
         quantidade: this.quantidadeDoItem,
         valor_total_item: this.quantidadeDoItem * this.produto.preco,
       };
+
+      this.valor_total_compra += itemDaLista.valor_total_item;
+      this.valorTotalCompraEmit.emit(this.valor_total_compra);
 
       this.listaDeCompras.push(itemDaLista);
 
