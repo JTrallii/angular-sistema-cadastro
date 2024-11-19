@@ -4,8 +4,20 @@
   <div>
     <h1>CONTROLE DE VENDAS</h1>
     <div class="container__botao">
-      <app-botao-listar>LISTAR VENDAS</app-botao-listar>
-      <app-botao-listar>EFETUAR VENDAS</app-botao-listar>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="botao_listar"
+        [hoverBackgroundColor]="botao_listar_hover"
+        [font_size]="font_size"
+        (click)="adicionarProduto()"
+      >LISTAR VENDAS</app-botao-principal>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="botao_listar"
+        [hoverBackgroundColor]="botao_listar_hover"
+        [font_size]="font_size"
+        (click)="adicionarProduto()"
+      >EFETUAR VENDAS</app-botao-principal>
     </div>
     <div class="container__vendas">
       <div class="container__vendas__descricao_estoque">

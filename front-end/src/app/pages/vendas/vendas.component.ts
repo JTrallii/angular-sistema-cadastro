@@ -1,24 +1,22 @@
 import { Component } from '@angular/core';
 import { PesquisarProdutoComponent } from './pesquisar-produto/pesquisar-produto.component';
-import { BotaoListarComponent } from '../../components/botao-listar/botao-listar.component';
 import { ListaVendasProdutosComponent } from './lista-vendas-produtos/lista-vendas-produtos.component';
 import { Produto, ProdutoSimplificado } from '../../utils/interface/IProduto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BotaoSalvarComponent } from "../../components/botao-salvar/botao-salvar.component";
 import { BotaoPrincipalComponent } from "../../components/botao-principal/botao-principal.component";
+import { BotaoListarComponent } from "../../components/botao-listar/botao-listar.component";
 
 @Component({
   selector: 'app-vendas',
   standalone: true,
   imports: [
     PesquisarProdutoComponent,
-    BotaoListarComponent,
     ListaVendasProdutosComponent,
     CommonModule,
     FormsModule,
-    BotaoSalvarComponent,
-    BotaoPrincipalComponent
+    BotaoPrincipalComponent,
+    BotaoListarComponent
 ],
   templateUrl: './vendas.component.html',
   styleUrl: './vendas.component.scss',
@@ -27,6 +25,9 @@ export class VendasComponent {
   texto: "#ffffff" = "#ffffff";
   salvar: "#47a138" = "#47a138";
   salvar_hover: "#267c17" = "#267c17";
+  botao_listar: string = "#17202a";
+  botao_listar_hover: string = "#0c1116";
+  font_size: string = "1.2rem";
   estoque: number = 0; // Armazena a quantidade em estoque do produto
   quantidade: number = 1; // Valor inicial do input de quantidade
   preco: number = 0; // Armazena o preço do produto

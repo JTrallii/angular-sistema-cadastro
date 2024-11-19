@@ -16,6 +16,7 @@ export class BotaoPrincipalComponent {
   @Input() hoverBackgroundColor: string = "darkblue";
   @Input() borda: string = "none";
   @Input() marginLeft: string = "0px";
+  @Input() font_size: string = "1rem";
   @Output() onClick = new EventEmitter<void>();
 
 

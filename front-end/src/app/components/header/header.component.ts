@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ModalLoginUsuarioComponent } from "../modal-login-usuario/modal-login-usuario.component";
 import { ModalCadastroUsuarioComponent } from "../modal-cadastro-usuario/modal-cadastro-usuario.component";
 import { CommonModule } from '@angular/common';
-import { BotaoHeaderComponent } from '../botao-header/botao-header.component';
 import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.component";
 
 
@@ -14,7 +13,6 @@ import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.comp
     CommonModule,
     ModalLoginUsuarioComponent,
     ModalCadastroUsuarioComponent,
-    BotaoHeaderComponent,
     BotaoPrincipalComponent
 ],
   templateUrl: './header.component.html',
