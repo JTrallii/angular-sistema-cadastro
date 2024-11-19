@@ -1,0 +1,17 @@
+
+
+
+<button
+  [ngStyle]="{
+    '--color': color,
+    '--background-color': backgroundColor,
+    '--hover-color': hoverColor,
+    '--hover-background-color': hoverBackgroundColor,
+    '--borda': borda,
+    '--margin-left': marginLeft
+  }"
+  (click)="emitClick()"
+>
+  <ng-content></ng-content>
+</button>
+

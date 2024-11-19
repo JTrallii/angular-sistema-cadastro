@@ -29,7 +29,12 @@
     </div>
   </div>
   <div class="container__botao">
-    <app-botao-salvar (click)="adicionarProduto()">ADICIONAR O PRODUTO</app-botao-salvar>
+    <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="salvar"
+        [hoverBackgroundColor]="salvar_hover"
+        (click)="adicionarProduto()"
+      >ADICIONAR O PRODUTO</app-botao-principal>
   </div>
 
   <div class="container__lista">
@@ -39,7 +44,12 @@
     <div class="container__lista__valor_compras">
       <h3>VALOR TOTAL DAS COMPRAS</h3>
       <p>R$ {{ totalCompra | number: "1.2-2" }}</p>
-      <app-botao-salvar (click)="adicionarProduto()">FINALIZAR VENDA</app-botao-salvar>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="salvar"
+        [hoverBackgroundColor]="salvar_hover"
+        (click)="adicionarProduto()"
+      >FINALIZAR VENDA</app-botao-principal>
     </div>
   </div>
 </section>

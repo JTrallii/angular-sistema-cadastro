@@ -6,6 +6,7 @@ import { Produto, ProdutoSimplificado } from '../../utils/interface/IProduto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BotaoSalvarComponent } from "../../components/botao-salvar/botao-salvar.component";
+import { BotaoPrincipalComponent } from "../../components/botao-principal/botao-principal.component";
 
 @Component({
   selector: 'app-vendas',
@@ -16,12 +17,16 @@ import { BotaoSalvarComponent } from "../../components/botao-salvar/botao-salvar
     ListaVendasProdutosComponent,
     CommonModule,
     FormsModule,
-    BotaoSalvarComponent
+    BotaoSalvarComponent,
+    BotaoPrincipalComponent
 ],
   templateUrl: './vendas.component.html',
   styleUrl: './vendas.component.scss',
 })
 export class VendasComponent {
+  texto: "#ffffff" = "#ffffff";
+  salvar: "#47a138" = "#47a138";
+  salvar_hover: "#267c17" = "#267c17";
   estoque: number = 0; // Armazena a quantidade em estoque do produto
   quantidade: number = 1; // Valor inicial do input de quantidade
   preco: number = 0; // Armazena o preço do produto
@@ -70,9 +75,7 @@ export class VendasComponent {
       this.quantidadeDoItem = Number(this.quantidade);
 
       // Resetar os campos no pai
-      console.log("Antes", this.produtoSelecionado);
       this.produtoSelecionado = null;
-      console.log(this.produtoSelecionado);
       this.quantidade = 1; // Quantidade inicial para o próximo produto
       this.estoque = 0;
       this.preco = 0;

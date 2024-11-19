@@ -1,0 +1,24 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+
+button {
+  border: var(--borda);
+  border-radius: 1rem;
+  font-weight: 700;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color); //$cor-branco
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: var(--margin-left);
+}
+
+button:hover {
+  color: var(--hover-color);
+  background-color: var(--hover-background-color);
+}
+
+

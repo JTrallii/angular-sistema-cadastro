@@ -21,6 +21,12 @@
     flex-direction: row;
     justify-content: space-between;
 
+    &__botoes {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+
     &__logo {
       width: 130px;
     }

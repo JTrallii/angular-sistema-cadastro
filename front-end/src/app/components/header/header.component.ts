@@ -4,6 +4,7 @@ import { ModalLoginUsuarioComponent } from "../modal-login-usuario/modal-login-u
 import { ModalCadastroUsuarioComponent } from "../modal-cadastro-usuario/modal-cadastro-usuario.component";
 import { CommonModule } from '@angular/common';
 import { BotaoHeaderComponent } from '../botao-header/botao-header.component';
+import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.component";
 
 
 @Component({
@@ -13,7 +14,8 @@ import { BotaoHeaderComponent } from '../botao-header/botao-header.component';
     CommonModule,
     ModalLoginUsuarioComponent,
     ModalCadastroUsuarioComponent,
-    BotaoHeaderComponent
+    BotaoHeaderComponent,
+    BotaoPrincipalComponent
 ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -25,8 +27,12 @@ export class HeaderComponent {
   usuarioLogado = false;
   login = "login";
   cadastro = "cadastro"
-  primario: "primario" = "primario"; // Define explicitamente o tipo literal "primario"
-  secundario: "secundario" = "secundario"; // Define explicitamente o tipo literal "secundario"
+  branco: "#ecf0f1" = "#ecf0f1"; // Define explicitamente o tipo literal
+  verde: "#47a138" = "#47a138"; // Define explicitamente o tipo literal
+  transparente: "transparent" = "transparent";
+  font_size: "1.3rem" = "1.3rem";
+  borda: "3px solid #47a138" = "3px solid #47a138";
+  marginLeft: string = "1rem";
 
   constructor(private router: Router) {}
 

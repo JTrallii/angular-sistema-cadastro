@@ -70,9 +70,21 @@
 
 
     <div class="container__botoes">
-      <app-botao-salvar [tipo]="salvar"> SALVAR </app-botao-salvar>
-      <app-botao-salvar [tipo]="atualizar"> ATUALIZAR </app-botao-salvar>
-      <app-botao-salvar [tipo]="excluir"> EXCLUIR </app-botao-salvar>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="salvar"
+        [hoverBackgroundColor]="salvar_hover"
+      >SALVAR</app-botao-principal>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="atualizar"
+        [hoverBackgroundColor]="atualizar_hover"
+      >ATUALIZAR</app-botao-principal>
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="excluir"
+        [hoverBackgroundColor]="excluir_hover"
+      >EXCLUIR</app-botao-principal>
     </div>
   </form>
 </section>

@@ -4,14 +4,17 @@
   <div class="container__menu">
     <img src="/assets/logo.png" alt="logo" class="container__menu__logo"/>
     <section *ngIf="!usuarioLogado; else logado">
-      <div>
-        <app-botao-header
-          [acaoBotao]="login"
-          [tipo]="primario"
-          (onClick)="abrirModalLogin()"
+      <div class="container__menu__botoes">
+        <app-botao-principal
+          [color]="verde"
+          [backgroundColor]="transparente"
+          [hoverColor]="branco"
+          [hoverBackgroundColor]="verde"
+          [fontSize]="font_size"
+          [borda]="borda"
         >
-          Fazer Login
-        </app-botao-header>
+          FAZER LOGIN
+        </app-botao-principal>
 
         <app-modal-login-usuario
           [aberta]="modalLoginUsuario"
@@ -19,13 +22,16 @@
           (aoEfetuarLogin)="aoEfetuarLogin()"
         ></app-modal-login-usuario>
 
-        <app-botao-header
-          [acaoBotao]="cadastro"
-          [tipo]="secundario"
-          (onClick)="abrirModalCadastro()"
+        <app-botao-principal
+          [color]="branco"
+          [backgroundColor]="verde"
+          [hoverColor]="verde"
+          [hoverBackgroundColor]="branco"
+          [fontSize]="font_size"
+          [borda]="borda"
         >
-          Fazer Cadastro
-        </app-botao-header>
+          FAZER CADASTRO
+        </app-botao-principal>
 
         <app-modal-cadastro-usuario
           [aberta]="modalCadastroUsuario"
