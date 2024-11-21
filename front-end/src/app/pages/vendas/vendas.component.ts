@@ -5,7 +5,6 @@ import { Produto, ProdutoSimplificado } from '../../utils/interface/IProduto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BotaoPrincipalComponent } from "../../components/botao-principal/botao-principal.component";
-import { BotaoListarComponent } from "../../components/botao-listar/botao-listar.component";
 
 @Component({
   selector: 'app-vendas',
@@ -16,7 +15,6 @@ import { BotaoListarComponent } from "../../components/botao-listar/botao-listar
     CommonModule,
     FormsModule,
     BotaoPrincipalComponent,
-    BotaoListarComponent
 ],
   templateUrl: './vendas.component.html',
   styleUrl: './vendas.component.scss',
