@@ -1,0 +1,71 @@
+<section *ngIf="aberta">
+  <div class="container">
+    <div
+      class="container__background__modal"
+      (click)="aoFechar.emit()"
+      aria-hidden="true"
+    ></div>
+    <div class="container__janela_modal">
+      <h1>FINALIZANDO VENDAS - PAGAMENTOS</h1>
+      <button
+        class="container__janela_modal__botao_fechar"
+        (click)="aoFechar.emit()"
+      >
+        X
+      </button>
+      <div class="container__janela_modal__pagamentos">
+        <div class="container__janela_modal__pagamentos__total">
+          <h3 class="container__janela_modal__pagamentos__total__titulo">
+            ADICIONAR DESCONTO
+          </h3>
+          <div>
+            <label for="vendas">DESCONTO:</label>
+            <input type="number" name="vendas" id="vendas" />
+          </div>
+          <div>
+            <label for="valor_total">VALOR TOTAL:</label>
+            <input type="number" name="valor_total" id="valor_total" readonly />
+          </div>
+          <div>
+            <label for="despesas">DESPESAS:</label>
+            <input type="number" name="despesas" id="despesas" readonly />
+          </div>
+          <div>
+            <label for="pagamentos">PAGAMENTO:</label>
+            <input type="number" name="pagamentos" id="pagamentos" readonly />
+          </div>
+          <div>
+            <label for="troco">TROCO:</label>
+            <input type="number" name="troco" id="troco" readonly />
+          </div>
+        </div>
+        <div class="container__janela_modal__pagamentos__opcoes">
+          <h3 class="container__janela_modal__pagamentos__opcoes__titulo">
+            ADICIONAR FORMAS DE PAGAMENTO
+          </h3>
+          <h2 class="container__janela_modal__pagamentos__opcoes__subtitulo">
+            FORMA DE PAGAMENTO:
+          </h2>
+          <ul>
+            <li
+              *ngFor="let forma of formasDePagamento"
+              (click)="selecionarForma(forma)"
+              [ngClass]="{ ativo: formaPagamentoSelecionada === forma }"
+            >
+              {{ forma }}
+            </li>
+          </ul>
+        </div>
+        <div class="container__janela_modal__pagamentos__valores">
+          <h3 class="container__janela_modal__pagamentos__valores__titulo">
+            VALOR DO PAGAMENTO
+          </h3>
+          <h4>VALOR TOTAL A PAGAR:</h4>
+          <input type="text" name="total_a_pagar" id="total_a_pagar" readonly>
+          <h4>FORMA DE PAGAMENTO SELECIONADA:</h4>
+          <h4>{{ formaPagamentoSelecionada }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
