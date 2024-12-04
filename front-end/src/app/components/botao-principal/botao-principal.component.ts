@@ -17,7 +17,6 @@ export class BotaoPrincipalComponent {
   @Input() borda: string = "none";
   @Input() marginLeft: string = "0px";
   @Input() font_size: string = "1rem";
-  @Input() disabled: boolean | null = false;
   @Output() onClick = new EventEmitter<void>();
 
 

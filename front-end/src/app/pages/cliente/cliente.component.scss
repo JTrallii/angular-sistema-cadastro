@@ -20,13 +20,12 @@
   }
 
   &__cliente,
-  &__cpf,
+  &__documento,
   &__endereco,
-  &__complemento, &__bairro, &__telefone, &__email {
+  &__contato {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
-
 
     .input {
       width: 100%;
@@ -53,30 +52,37 @@
   }
 }
 
-.cliente, .complemento {
+.container__cliente__nome,
+.container__endereco__complemento {
   width: 100%;
 }
 
-.endereco {
+.container__endereco__logradouro {
   width: 80%;
 }
 
-.cpf, .rg, .telefone, .celular, .email1, .email2 {
+.container__documento__cpf,
+.container__documento__rg,
+.container__contato__telefone,
+.container__contato__celular,
+.container__contato__email1,
+.container__contato__email2 {
   width: 50%;
 }
 
-.numero {
+.container__endereco__numero {
   width: 20%;
 }
 
-.bairro, .cidade, .cep {
+.container__endereco__bairro,
+.container__endereco__cidade,
+.container__endereco__cep {
   width: 33%;
 }
 
 .block {
   display: block;
 }
-
 
 .descricao {
   width: 100%;
