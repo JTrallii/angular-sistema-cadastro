@@ -26,17 +26,7 @@ export class ProdutoComponent {
   excluir: "#ff0000" = "#ff0000";
   excluir_hover: "#da0000" = "#da0000";
 
-  form: FormGroup;
-
   constructor(private router: Router) {
-    this.form = new FormGroup({
-      cdg_barras: new FormControl(null, [
-        Validators.required,
-        Validators.pattern('^[0-9]+$'),
-        Validators.minLength(7),
-        Validators.maxLength(13),
-      ]),
-    });
   }
 
   cadastrar(form: NgForm) {

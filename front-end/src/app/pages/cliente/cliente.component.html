@@ -1,91 +1,329 @@
 <section class="container">
   <h1>CADASTRO DE CLIENTES</h1>
-  <form action="" class="">
+  <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
     <div class="container__cliente">
       <div class="container__cliente__nome">
-        <label class="block" for="">NOME DO CLIENTE:</label>
-        <input class="input" type="text" name="cliente" />
+        <label class="block" for="cliente">NOME DO CLIENTE:</label>
+        <input
+          class="input"
+          type="text"
+          name="cliente"
+          ngModel
+          required
+          minlength="3"
+          #cliente="ngModel"
+        />
+        <div *ngIf="(cliente?.invalid && cliente?.touched) || cliente?.dirty">
+          <app-mensagem-erro-validacao *ngIf="cliente?.errors?.['required']">
+            O nome do cliente precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="cliente?.errors?.['minlength']">
+            O nome do cliente precisa ter pelo menos 3 caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__documento">
       <div class="container__documento__cpf">
         <label class="block" for="cpf">CPF:</label>
-        <input class="input" type="text" name="cpf" />
+        <input
+          class="input"
+          type="text"
+          name="cpf"
+          required
+          ngModel
+          minlength="14"
+          maxlength="14"
+          pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
+          #cpf="ngModel"
+        />
+        <div *ngIf="(cpf?.invalid && cpf?.touched) || cpf?.dirty">
+          <app-mensagem-erro-validacao *ngIf="cpf?.errors?.['required']">
+            O CPF do cliente precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="cpf?.errors?.['pattern']">
+            O CPF do cliente precisa seguir o exemplo: 123.456.789-01 !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
       <div class="container__documento__rg">
         <label class="block" for="rg">RG:</label>
-        <input class="input" type="text" name="rg" />
+        <input
+          class="input"
+          type="text"
+          name="rg"
+          required
+          ngModel
+          minlength="12"
+          maxlength="12"
+          #rg="ngModel"
+          pattern="^\d{2}\.\d{3}\.\d{3}-\d{1}$"
+        />
+        <div *ngIf="(rg?.invalid && rg?.touched) || rg?.dirty">
+          <app-mensagem-erro-validacao *ngIf="rg?.errors?.['required']">
+            O RG do cliente precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="rg?.errors?.['pattern']">
+            O RG do cliente precisa seguir o exemplo: 12.345.678-9 !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__endereco">
       <div class="container__endereco__logradouro">
         <label class="block" for="logradouro">ENDEREÇO:</label>
-        <input class="input" type="text" name="logradouro" />
+        <input
+          class="input"
+          type="text"
+          name="logradouro"
+          required
+          ngModel
+          minlength="5"
+          maxlength="150"
+          #logradouro="ngModel"
+        />
+        <div
+          *ngIf="
+            (logradouro?.invalid && logradouro?.touched) || logradouro?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao *ngIf="logradouro?.errors?.['required']">
+            O endereço do cliente precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
       <div class="container__endereco__numero">
         <label class="block" for="numero">NÚMERO:</label>
-        <input class="input" type="text" name="numero" />
+        <input
+          class="input"
+          type="text"
+          name="numero"
+          ngModel
+          maxlength="8"
+          #numero="ngModel"
+          pattern="^\d{1,8}$"
+        />
+        <div *ngIf="(numero?.invalid && numero?.touched) || numero?.dirty">
+          <app-mensagem-erro-validacao *ngIf="numero?.errors?.['pattern']">
+            O número do endereço precisa ser em numerico!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__endereco">
       <div class="container__endereco__complemento">
         <label class="block" for="complemento">COMPLEMENTO:</label>
-        <input class="input" type="text" name="complemento" />
+        <input
+          class="input"
+          type="text"
+          name="complemento"
+          ngModel
+          maxlength="40"
+          #complemento="ngModel"
+        />
+        <div
+          *ngIf="
+            (complemento?.invalid && complemento?.touched) || complemento?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="complemento?.errors?.['maxlength']"
+          >
+            O complemento deve ter até 40 caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__endereco">
+      <div class="container__endereco__cep">
+        <label class="block" for="cep">CEP:</label>
+        <input
+          class="input"
+          type="text"
+          name="cep"
+          required
+          ngModel
+          minlength="1"
+          maxlength="25"
+          #cep="ngModel"
+          minlength="8"
+          maxlength="9"
+          pattern="^(\d{5})(-?\d{3})$"
+        />
+        <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+          <app-mensagem-erro-validacao *ngIf="cep?.errors?.['required']">
+            O CEP deve ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="cep?.errors?.['pattern']">
+            O CEP deve seguir o exemplo: 00000-000 !
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
       <div class="container__endereco__bairro">
         <label class="block" for="bairro">BAIRRO:</label>
-        <input class="input" type="text" name="bairro" />
+        <input
+          class="input"
+          type="text"
+          name="bairro"
+          required
+          ngModel
+          minlength="1"
+          maxlength="25"
+          #bairro="ngModel"
+          pattern="^[A-Za-z]+$"
+        />
+        <div *ngIf="(bairro?.invalid && bairro?.touched) || bairro?.dirty">
+          <app-mensagem-erro-validacao *ngIf="bairro?.errors?.['required']">
+            O bairro deve ser cadastrado!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
       <div class="container__endereco__cidade">
         <label class="block" for="cidade">CIDADE:</label>
-        <input class="input" type="text" name="cidade" />
+        <input
+          class="input"
+          type="text"
+          name="cidade"
+          ngModel
+          required
+          minlength="1"
+          maxlength="25"
+          #cidade="ngModel"
+          pattern="^[A-Za-z]+$"
+        />
+        <div *ngIf="(cidade?.invalid && cidade?.touched) || cidade?.dirty">
+          <app-mensagem-erro-validacao *ngIf="cidade?.errors?.['required']">
+            A cidade deve ser cadastrado!
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
-      <div class="container__endereco__cep">
-        <label class="block" for="cep">CEP:</label>
-        <input class="input" type="text" name="cep" />
+      <div class="container__endereco__uf">
+        <label class="block" for="uf">UF:</label>
+        <input
+          class="input"
+          type="text"
+          name="uf"
+          ngModel
+          required
+          minlength="1"
+          maxlength="25"
+          #cep="ngModel"
+          minlength="2"
+          maxlength="2"
+          pattern="^\d{1,8}$"
+        />
+        <div *ngIf="(cidade?.invalid && cidade?.touched) || cidade?.dirty">
+          <app-mensagem-erro-validacao *ngIf="cidade?.errors?.['required']">
+            O UF deve ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="cidade?.errors?.['pattern']">
+            O UF deve seguir o exemplo: RJ !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__contato">
-      <div class="container__contato__telefone">
-        <label class="block" for="telefone">TELEFONE:</label>
-        <input class="input" type="text" name="telefone" />
-      </div>
       <div class="container__contato__celular">
         <label class="block" for="celular">CELULAR:</label>
-        <input class="input" type="text" name="celular" />
+        <input
+          class="input"
+          type="text"
+          name="celular"
+          ngModel
+          required
+          #celular="ngModel"
+          minlength="11"
+          maxlength="15"
+          pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$"
+        />
+        <div *ngIf="(celular?.invalid && celular?.touched) || celular?.dirty">
+          <app-mensagem-erro-validacao *ngIf="celular?.errors?.['required']">
+            O celular deve ser cadastrado !
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="celular?.errors?.['pattern']">
+            O celular deve seguir o exemplo: (11)12345-1234 ou 11123451234 !
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__contato__telefone">
+        <label class="block" for="telefone">TELEFONE:</label>
+        <input
+          class="input"
+          type="text"
+          name="telefone"
+          ngModel
+          #telefone="ngModel"
+          minlength="10"
+          maxlength="14"
+          pattern="^\(?\d{2}\)?\s?\d{4}-?\d{4}$"
+        />
+        <div
+          *ngIf="(telefone?.invalid && telefone?.touched) || telefone?.dirty"
+        >
+          <app-mensagem-erro-validacao *ngIf="telefone?.errors?.['pattern']">
+            O telefone deve seguir o exemplo: (11)2345-1234 ou 1123451234 !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
     <div class="container__contato">
       <div class="container__contato__email1">
         <label class="block" for="email1">EMAIL 1:</label>
-        <input class="input" type="text" name="email1" />
+        <input
+          class="input"
+          type="text"
+          name="email1"
+          ngModel
+          required
+          #email1="ngModel"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
+        <div *ngIf="(email1?.invalid && email1?.touched) || email1?.dirty">
+          <app-mensagem-erro-validacao *ngIf="email1?.errors?.['required']">
+            O email deve ser cadastrado !
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="email1?.errors?.['pattern']">
+            O email deve seguir o exemplo: email&#64;dominio.com !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
       <div class="container__contato__email2">
         <label class="block" for="email2">EMAIL 2:</label>
-        <input class="input" type="text" name="email2" />
+        <input
+          class="input"
+          type="text"
+          name="email2"
+          ngModel
+          #email2="ngModel"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
+        <div *ngIf="(email1?.invalid && email1?.touched) || email1?.dirty">
+          <app-mensagem-erro-validacao *ngIf="email1?.errors?.['pattern']">
+            O email deve seguir o exemplo: email&#64;dominio.com !
+          </app-mensagem-erro-validacao>
+        </div>
       </div>
     </div>
-
 
     <div class="container__botoes">
       <app-botao-principal
         [color]="texto"
         [backgroundColor]="salvar"
         [hoverBackgroundColor]="salvar_hover"
-      >SALVAR</app-botao-principal>
+        >SALVAR</app-botao-principal
+      >
       <app-botao-principal
         [color]="texto"
         [backgroundColor]="atualizar"
         [hoverBackgroundColor]="atualizar_hover"
-      >ATUALIZAR</app-botao-principal>
+        >ATUALIZAR</app-botao-principal
+      >
       <app-botao-principal
         [color]="texto"
         [backgroundColor]="excluir"
         [hoverBackgroundColor]="excluir_hover"
-      >EXCLUIR</app-botao-principal>
+        >EXCLUIR</app-botao-principal
+      >
     </div>
   </form>
 </section>
-
