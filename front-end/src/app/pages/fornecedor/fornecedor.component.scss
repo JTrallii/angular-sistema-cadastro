@@ -20,21 +20,11 @@
   }
 
   &__fornecedor,
-  &__nome_fantasia,
   &__endereco,
-  &__complemento, &__bairro, &__telefone, &__email {
+  &__contato {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
-
-
-    .input {
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 10px;
-      border: 3px solid $cor-cinza-escuro;
-      height: 45px;
-    }
   }
 
   label {
@@ -54,27 +44,54 @@
   }
 }
 
-.fornecedor, .complemento {
+.fornecedor, .container__endereco__complemento {
   width: 100%;
 }
 
-.endereco {
+.container__endereco__logradouro {
   width: 80%;
 }
 
-.nome_fantasia {
-  width: 67%;
+.container__fornecedor__nome_fantasia {
+  width: 80%;
 }
 
-.telefone, .celular, .email1, .email2 {
+.container__contato__telefone, .container__contato__celular, .container__contato__email1, .container__contato__email2 {
   width: 50%;
 }
 
-.bairro, .cidade, .cep, .cnpj {
-  width: 33%;
+.container__endereco__bairro, .container__endereco__cidade, .container__endereco__cep {
+  width: 30%;
 }
 
-.numero {
+.container__endereco__uf {
+  width: 10%;
+}
+
+.container__endereco__numero, .container__fornecedor__cnpj {
   width: 20%;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 3px solid $cor-cinza-escuro;
+  height: 45px;
+}
+
+.ng-touched.ng-invalid:not(form) {
+  border: 3px solid red;
+}
+
+input.input::-webkit-inner-spin-button,
+input.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type="number"].input {
+  -moz-appearance: textfield;
 }
 

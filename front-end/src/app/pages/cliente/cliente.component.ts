@@ -6,6 +6,7 @@ import { MensagemErroValidacaoComponent } from '../../components/mensagem-erro-v
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ValidaCepDirective } from '../../directives/valida-cep.directive';
+import marcarCamposComoTouched from '../../utils/marcarCamposFormulario';
 
 @Component({
   selector: 'app-cliente',
@@ -37,7 +38,7 @@ export class ClienteComponent {
 
   cadastrar(form: NgForm) {
     // Marca todos os campos como 'touched' para exibir as mensagens de erro
-    this.marcarCamposComoTouched(form);
+    marcarCamposComoTouched(form);
 
     if (form.valid) {
       this.router.navigateByUrl('/compras');
@@ -46,29 +47,16 @@ export class ClienteComponent {
     }
   }
 
-  marcarCamposComoTouched(form: NgForm) {
-    // Percorre todos os controles do formulário e marca como touched
-    Object.keys(form.controls).forEach((field) => {
-      const control = form.controls[field];
-      control.markAsTouched();
-    });
-  }
+
 
   consultaCep(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if(cep !== "") {
       this.ConsultaCepService.consultaCep(cep).subscribe((resultado) =>
-        this.populandoEndereco(resultado, form)
+        this.ConsultaCepService.populandoEndereco(resultado, form)
       );
     }
   }
 
-  populandoEndereco(dados: any, form: NgForm) {
-    form.form.patchValue({
-      endereco: dados.logradouro,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      uf: dados.uf,
-    });
-  }
+
 }
