@@ -1,71 +1,94 @@
-
-
-
 <section *ngIf="aberta">
   <div>
     <div
-      class = "background__modal"
-      (click)="aoFechar.emit(); resetFormulario();"
+      class="background__modal"
+      (click)="aoFechar.emit(); resetFormulario()"
       aria-hidden="true"
     ></div>
-    <div class = "janela__modal">
-      <button class = "fechar__modal" (click)="aoFechar.emit(); resetFormulario();">
+    <div class="janela__modal">
+      <button
+        class="fechar__modal"
+        (click)="aoFechar.emit(); resetFormulario()"
+      >
         X
       </button>
-      <div
-        class = "modal__container display align"
-      >
+      <div class="modal__container display align">
         <img
           src="../../../assets/imagem_cadastro.png"
           alt="Imagem Cadastro"
-          class = "modal__container_img"
+          class="modal__container_img"
         />
-        <p class = "modal__container_p">CADASTRO</p>
-        <form
-          class = "borda modal__container_form"
-          onSubmit={handleSubmit}
-        >
-          <label htmlFor="email" class = "display">
-            Nome:
-            <input
-              type="text"
-              name="name"
-              id="name"
-              data-test="name-input"
-              placeholder="Digite seu nome"
-              [ngClass]="buttonClasseNome"
-              [(ngModel)]="nome"
-            />
-            <span class = "error">{{ errorNome }}</span>
-          </label>
-          <label htmlFor="senha" class = "display">
-            E-mail:
-            <input
-              type="email"
-              name="email"
-              id="email"
-              data-test="email-input"
-              placeholder="Digite seu email"
-              [ngClass]="buttonClasseEmail"
-              [(ngModel)]="email"
-            />
-            <span class = "error">{{ errorEmail }}</span>
-          </label>
-          <label htmlFor="senha" class = "display">
-            Senha:
-            <input
-              type="password"
-              name="senha"
-              id="senha"
-              data-test="senha-input"
-              placeholder="Digite sua senha"
-              [ngClass]="buttonClasseSenha"
-              [(ngModel)]="senha"
-            />
-            <span class = "error">{{ errorSenha }}</span>
-          </label>
-          <div class = "display align">
-            <button type="submit">Cadastrar</button>
+        <p class="modal__container_p">CADASTRO</p>
+        <form class="borda modal__container_form" #form="ngForm" (ngSubmit)="cadastrar(form)">
+          <label for="nome" class="display">Nome: </label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            data-test="nome-input"
+            placeholder="Digite seu nome"
+            ngModel
+            required
+            minlength="3"
+            #nome="ngModel"
+          />
+          <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
+            <app-mensagem-erro-validacao *ngIf="nome?.errors?.['required']">
+              O nome precisa ser cadastrado!
+            </app-mensagem-erro-validacao>
+            <app-mensagem-erro-validacao *ngIf="nome?.errors?.['minlength']">
+              O nome precisa ter pelo menos 3 caracteres!
+            </app-mensagem-erro-validacao>
+          </div>
+
+          <label for="senha" class="display"> E-mail: </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            data-test="email-input"
+            placeholder="Digite seu email"
+            ngModel
+            required
+            #email="ngModel"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          />
+          <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
+            <app-mensagem-erro-validacao *ngIf="email?.errors?.['required']">
+              O e-mail precisa ser cadastrado!
+            </app-mensagem-erro-validacao>
+            <app-mensagem-erro-validacao *ngIf="email?.errors?.['pattern']">
+              O email deve seguir o exemplo: email&#64;dominio.com !
+            </app-mensagem-erro-validacao>
+          </div>
+          <label for="senha" class="display"> Senha: </label>
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            data-test="senha-input"
+            placeholder="Digite sua senha"
+            ngModel
+            required
+            #senha="ngModel"
+            pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          />
+          <div *ngIf="(senha?.invalid && senha?.touched) || senha?.dirty">
+            <app-mensagem-erro-validacao *ngIf="senha?.errors?.['required']">
+              O senha precisa ser cadastrada!
+            </app-mensagem-erro-validacao>
+            <app-mensagem-erro-validacao *ngIf="senha?.errors?.['pattern']">
+              A senha deve conter pelo menos 1 número, 1 letra maiúscula e 1
+              caracter especial !
+            </app-mensagem-erro-validacao>
+          </div>
+          <div class="display align">
+            <app-botao-principal
+              [color]="branco"
+              [backgroundColor]="verde"
+              [hoverBackgroundColor]="verde_hover"
+              >SALVAR</app-botao-principal
+            >
           </div>
         </form>
       </div>

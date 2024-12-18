@@ -1,14 +1,20 @@
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import marcarCamposComoTouched from '../../utils/marcarCamposFormulario';
+import { MensagemErroValidacaoComponent } from "../mensagem-erro-validacao/mensagem-erro-validacao.component";
+import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.component";
 
 @Component({
   selector: 'app-modal-cadastro-usuario',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,
+    MensagemErroValidacaoComponent,
+    BotaoPrincipalComponent
+],
   templateUrl: './modal-cadastro-usuario.component.html',
   styleUrl: './modal-cadastro-usuario.component.scss'
 })
@@ -30,6 +36,13 @@ export class ModalCadastroUsuarioComponent {
   errorEmail = "";
   errorSenha = "";
   formSubmetido = false;
+  branco: "#ecf0f1" = "#ecf0f1"; // Define explicitamente o tipo literal
+  verde: "#47a138" = "#47a138"; // Define explicitamente o tipo literal
+  verde_hover = "#267c17"
+
+  constructor(
+    private router: Router
+  ) {}
 
   resetFormulario() {
     this.nome = "";
@@ -44,41 +57,7 @@ export class ModalCadastroUsuarioComponent {
     this.formSubmetido = false;
   };
 
-  validarNome = (nome: string): boolean => {
-    if (nome.length < 4) {
-      this.errorNome = "Nome deve conter pelo menos 4 caracteres.";
-      return false;
-    }
-    this.errorNome = "";
-    this.isNomeValido = true;
-    return true;
-  };
 
-  validarEmail = (email: string): boolean => {
-    const emailRegex = /\w{3,}@[a-zA-Z]{3,}\.[a-zA-Z]{2,}/;
-    if (!emailRegex.test(email)) {
-      this.errorEmail = "Email inválido.";
-      this.isEmailValido = false;
-      return false;
-    }
-
-    return true;
-
-    // const emailCadastrado = usuarios.some(
-    //   (usuario: ILogin) => usuario.email === email
-    // );
-
-
-    // if (emailCadastrado) {
-    //   setErrorEmail("Email já cadastrado.");
-    //   setIsEmailValido(false);
-    //   return false;
-    // }
-
-    // setErrorEmail("");
-    // setIsEmailValido(true);
-    // return true;
-  };
 
   get buttonClasseNome() {
     return this.formSubmetido === !this.isNomeValido ? "invalido" : ""
@@ -90,6 +69,17 @@ export class ModalCadastroUsuarioComponent {
 
   get buttonClasseSenha() {
     return this.formSubmetido === !this.isSenhaValido ? "invalido" : ""
+  }
+
+  cadastrar(form: NgForm) {
+    // Marca todos os campos como 'touched' para exibir as mensagens de erro
+    marcarCamposComoTouched(form);
+
+    if (form.valid) {
+      this.router.navigateByUrl('/compras');
+    } else {
+      console.log('Formulário inválido!');
+    }
   }
 
 

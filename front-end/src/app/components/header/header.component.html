@@ -12,6 +12,7 @@
           [hoverBackgroundColor]="verde"
           [fontSize]="font_size"
           [borda]="borda"
+          (onClick)="abrirModalLogin()"
         >
           FAZER LOGIN
         </app-botao-principal>
@@ -26,9 +27,10 @@
           [color]="branco"
           [backgroundColor]="verde"
           [hoverColor]="verde"
-          [hoverBackgroundColor]="branco"
+          [hoverBackgroundColor]="preto"
           [fontSize]="font_size"
           [borda]="borda"
+          (onClick)="abrirModalCadastro()"
         >
           FAZER CADASTRO
         </app-botao-principal>

@@ -27,6 +27,7 @@ export class HeaderComponent {
   cadastro = "cadastro"
   branco: "#ecf0f1" = "#ecf0f1"; // Define explicitamente o tipo literal
   verde: "#47a138" = "#47a138"; // Define explicitamente o tipo literal
+  preto = "#17202a"
   transparente: "transparent" = "transparent";
   font_size: "1.3rem" = "1.3rem";
   borda: "3px solid #47a138" = "3px solid #47a138";
