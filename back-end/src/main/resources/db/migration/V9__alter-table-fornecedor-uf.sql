@@ -1,6 +1,0 @@
-ALTER TABLE fornecedores MODIFY COLUMN uf VARCHAR(2) NOT NULL;
-
-
-
-
-
