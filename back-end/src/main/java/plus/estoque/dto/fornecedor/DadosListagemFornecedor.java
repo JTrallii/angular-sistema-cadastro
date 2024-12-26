@@ -4,7 +4,7 @@ import plus.estoque.domain.fornecedor.Fornecedor;
 
 public record DadosListagemFornecedor(
 
-
+        Long id,
         String fornecedor,
         String nomeFantasia,
         String cnpj,
@@ -17,6 +17,7 @@ public record DadosListagemFornecedor(
 
     public DadosListagemFornecedor(Fornecedor fornecedor) {
         this(
+                fornecedor.getId(),
                 fornecedor.getFornecedor(),
                 fornecedor.getNomeFantasia(),
                 fornecedor.getCnpj(),

@@ -6,7 +6,6 @@ import plus.estoque.domain.fornecedor.Fornecedor;
 import plus.estoque.domain.produtos.enums.*;
 import plus.estoque.dto.produtos.DadosAtualizarProduto;
 import plus.estoque.dto.produtos.DadosCadastroProduto;
-
 import java.math.BigDecimal;
 import java.util.Optional;
 

@@ -8,6 +8,7 @@ public record DadosEndereco(
 
         @NotBlank
         String logradouro,
+        String numero,
         @NotNull
         String bairro,
         @NotBlank
@@ -18,8 +19,8 @@ public record DadosEndereco(
         @NotBlank
         @Pattern(regexp = "[A-Z]{2}")
         String uf,
-        String complemento,
-        String numero
+        String complemento
+
 
 ) {
 }

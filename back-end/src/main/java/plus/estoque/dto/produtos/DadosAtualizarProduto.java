@@ -10,6 +10,8 @@ public record DadosAtualizarProduto(
 
         @NotNull
         Long id,
+        @NotNull
+        Boolean ativo,
         String produto,
         String codigoBarras,
         String fornecedor,

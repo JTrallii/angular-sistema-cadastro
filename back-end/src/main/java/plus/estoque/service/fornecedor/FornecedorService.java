@@ -36,14 +36,22 @@ public class FornecedorService {
                 .toList();
     }
 
+    public List<DadosListagemFornecedor> listarTodosFornecedoresAtivos() {
+        return fornecedorRepository.findAllByAtivoTrue()
+                .orElse(List.of())
+                .stream()
+                .map(DadosListagemFornecedor::new)
+                .toList();
+    }
+
     public DadosDetalhamentoFornecedor detalhamentoFornecedor(@PathVariable Long id) {
         var fornecedor = fornecedorRepository.getReferenceById(id);
         return new DadosDetalhamentoFornecedor(fornecedor);
     }
 
-    public Page<DadosListagemFornecedor> listarFornecedores(Pageable paginacao) {
-        return fornecedorRepository.findAll(paginacao).map(DadosListagemFornecedor::new);
-    }
+//    public Page<DadosListagemFornecedor> listarFornecedores(Pageable paginacao) {
+//        return fornecedorRepository.findAll(paginacao).map(DadosListagemFornecedor::new);
+//    }
 
 }
 
