@@ -13,7 +13,8 @@ public record DadosDetalhamentoFornecedor(
         String cnpj,
         String telefone,
         String celular,
-        String email,
+        String email1,
+        String email2,
 
         Endereco endereco
 
@@ -21,7 +22,7 @@ public record DadosDetalhamentoFornecedor(
 
     public DadosDetalhamentoFornecedor(Fornecedor fornecedor) {
         this(fornecedor.getId(), fornecedor.getFornecedor(), fornecedor.getNomeFantasia(), fornecedor.getCnpj(), fornecedor.getTelefone(), fornecedor.getCelular(),
-                fornecedor.getEmail(), fornecedor.getEndereco());
+                fornecedor.getEmail1(), fornecedor.getEmail2(), fornecedor.getEndereco());
     }
 
 

@@ -20,7 +20,10 @@ public record DadosCadastroFornecedor(
         String celular,
         @NotBlank
         @Email
-        String email,
+        String email1,
+        @NotBlank
+        @Email
+        String email2,
         @NotNull
         @Valid
         DadosEndereco endereco

@@ -10,7 +10,8 @@ public record DadosListagemFornecedor(
         String cnpj,
         String telefone,
         String celular,
-        String email
+        String email1,
+        String email2
 
 ) {
 
@@ -21,7 +22,8 @@ public record DadosListagemFornecedor(
                 fornecedor.getCnpj(),
                 fornecedor.getTelefone(),
                 fornecedor.getCelular(),
-                fornecedor.getEmail()
+                fornecedor.getEmail1(),
+                fornecedor.getEmail2()
         );
     }
 

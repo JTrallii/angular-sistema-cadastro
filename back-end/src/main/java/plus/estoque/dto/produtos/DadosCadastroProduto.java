@@ -12,8 +12,8 @@ public record DadosCadastroProduto(
         String produto,
         @NotBlank
         String codigoBarras,
-        @NotNull
-        Fornecedor fornecedor,
+        @NotBlank
+        String fornecedor,
         @NotBlank
         String descricao,
         String marca,
@@ -24,15 +24,14 @@ public record DadosCadastroProduto(
         @NotNull
         BigDecimal precoCusto,
         @NotNull
-        Double qtdEstoque,
+        Double quantidade,
         @NotNull
-        Double qtdMinimaEstoque,
+        Double qtd_minima,
         @NotNull
         CategoriaProduto categoriaProduto,
+        @NotNull
         Material material,
-        UnidadeDimensao unidadeDimensao,
-        UnidadePeso unidadePeso,
-        UnidadeVolume unidadeVolume
+        @NotNull
+        UnidadeMedida unidadeMedida
 
-) {
-}
+) {}

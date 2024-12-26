@@ -6,5 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import plus.estoque.domain.fornecedor.Fornecedor;
 
+import java.util.Optional;
+
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
+
+    Optional<Fornecedor> findByFornecedor(String fornecedor);
 }

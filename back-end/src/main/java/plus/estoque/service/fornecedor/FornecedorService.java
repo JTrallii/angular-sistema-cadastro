@@ -7,8 +7,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import plus.estoque.domain.fornecedor.Fornecedor;
 import plus.estoque.dto.fornecedor.DadosCadastroFornecedor;
+import plus.estoque.dto.fornecedor.DadosDetalhamentoFornecedor;
 import plus.estoque.dto.fornecedor.DadosListagemFornecedor;
 import plus.estoque.repository.fornecedor.FornecedorRepository;
 
@@ -27,11 +29,16 @@ public class FornecedorService {
         return fornecedor;
     }
 
-    public List<DadosListagemFornecedor> converteDados(List<Fornecedor> fornecedores) {
-        return fornecedores.stream()
-                .map(f -> new DadosListagemFornecedor(f.getFornecedor(), f.getNomeFantasia(),
-                        f.getCnpj(), f.getTelefone(), f.getCelular(), f.getEmail()))
-                .collect(Collectors.toList());
+    public List<DadosListagemFornecedor> listarTodosFornecedores() {
+        return fornecedorRepository.findAll()
+                .stream()
+                .map(DadosListagemFornecedor::new)
+                .toList();
+    }
+
+    public DadosDetalhamentoFornecedor detalhamentoFornecedor(@PathVariable Long id) {
+        var fornecedor = fornecedorRepository.getReferenceById(id);
+        return new DadosDetalhamentoFornecedor(fornecedor);
     }
 
     public Page<DadosListagemFornecedor> listarFornecedores(Pageable paginacao) {

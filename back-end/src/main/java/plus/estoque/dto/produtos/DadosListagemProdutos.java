@@ -18,23 +18,17 @@ public record DadosListagemProdutos(
         String sku,
         BigDecimal precoVenda,
         BigDecimal precoCusto,
-        Double qtdEstoque,
-        Double qtdMinimaEstoque,
+        Double quantidade,
+        Double qtd_minima,
         CategoriaProduto categoriaProduto,
-        Material material,
-        UnidadeDimensao unidadeDimensao,
-        UnidadePeso unidadePeso,
-        UnidadeVolume unidadeVolume
-
+        Material material
 ) {
 
     public DadosListagemProdutos(Produto produto) {
         this(produto.getProduto(), produto.getCodigoBarras(), produto.getFornecedor(), produto.getDescricao(),
                 produto.getMarca(), produto.getModelo(), produto.getSku(), produto.getPrecoVenda(),
-                produto.getPrecoCusto(), produto.getQtdEstoque(), produto.getQtdMinimaEstoque(),
-                produto.getCategoriaProduto(), produto.getMaterial(),
-                produto.getUnidadeDimensao(), produto.getUnidadePeso(),
-                produto.getUnidadeVolume());
+                produto.getPrecoCusto(), produto.getQuantidade(), produto.getQtd_minima(),
+                produto.getCategoriaProduto(), produto.getMaterial());
     }
 
 }

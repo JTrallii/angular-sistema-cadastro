@@ -26,15 +26,12 @@ public record DadosAtualizarProduto(
         @NotNull
         BigDecimal precoCusto,
         @NotNull
-        Double qtdEstoque,
+        Double quantidade,
         @NotNull
-        Double qtdMinimaEstoque,
+        Double qtd_minima,
         @NotNull
         CategoriaProduto categoriaProduto,
-        Material material,
-        UnidadeDimensao unidadeDimensao,
-        UnidadePeso unidadePeso,
-        UnidadeVolume unidadeVolume
+        Material material
 
 ) {
 }

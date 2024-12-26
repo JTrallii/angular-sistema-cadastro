@@ -20,9 +20,10 @@ public class Fornecedor {
         private String fornecedor;
         private String nomeFantasia;
         private String cnpj;
-        private String telefone;
         private String celular;
-        private String email;
+        private String telefone;
+        private String email1;
+        private String email2;
 
         @Embedded
         private Endereco endereco;
@@ -33,7 +34,8 @@ public class Fornecedor {
             this.cnpj = dados.cnpj();
             this.telefone = dados.telefone();
             this.celular = dados.celular();
-            this.email = dados.email();
+            this.email1 = dados.email1();
+            this.email2 = dados.email2();
             this.endereco = new Endereco(
                     dados.endereco().logradouro(),
                     dados.endereco().bairro(),
@@ -44,18 +46,4 @@ public class Fornecedor {
                     dados.endereco().uf()
             );
     }
-
-        @Override
-        public String toString() {
-                return "Fornecedor{" +
-                        "id=" + id +
-                        ", fornecedor='" + fornecedor + '\'' +
-                        ", nomeFantasia='" + nomeFantasia + '\'' +
-                        ", cnpj='" + cnpj + '\'' +
-                        ", telefone='" + telefone + '\'' +
-                        ", celular='" + celular + '\'' +
-                        ", email='" + email + '\'' +
-                        ", endereco=" + endereco +
-                        '}';
-        }
 }

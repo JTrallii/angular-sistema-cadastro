@@ -37,58 +37,50 @@ public class Produto {
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
-    @Column(nullable = false)
-    private String descricao;
-
-    private String marca;
-    private String modelo;
     private String sku;
 
     @Column(nullable = false)
-    private BigDecimal precoVenda;
+    private Double qtd_minima;
+
+    @Column(nullable = false)
+    private Double quantidade;
+
+    @Enumerated(EnumType.STRING)
+    private UnidadeMedida unidadeMedida;
 
     @Column(nullable = false)
     private BigDecimal precoCusto;
 
     @Column(nullable = false)
-    private Double qtdEstoque;
-
-    @Column(nullable = false)
-    private Double qtdMinimaEstoque;
-
+    private BigDecimal precoVenda;
 
     @Enumerated(EnumType.STRING)
     private CategoriaProduto categoriaProduto;
 
+    private String marca;
+    private String modelo;
+
+    @Column(nullable = false)
+    private String descricao;
+
     @Enumerated(EnumType.STRING)
     private Material material;
 
-    @Enumerated(EnumType.STRING)
-    private UnidadeDimensao unidadeDimensao;
-
-    @Enumerated(EnumType.STRING)
-    private UnidadePeso unidadePeso;
-
-    @Enumerated(EnumType.STRING)
-    private UnidadeVolume unidadeVolume;
 
     public Produto(DadosCadastroProduto dados) {
             this.produto = dados.produto();
             this.codigoBarras = dados.codigoBarras();
-            this.fornecedor = dados.fornecedor();
+            this.fornecedor = getFornecedor();
             this.descricao = dados.descricao();
             this.marca = dados.marca();
             this.modelo = dados.modelo();
             this.sku = dados.sku();
             this.precoVenda = dados.precoVenda();
             this.precoCusto = dados.precoCusto();
-            this.qtdEstoque = dados.qtdEstoque();
-            this.qtdMinimaEstoque = dados.qtdMinimaEstoque();
-            this.categoriaProduto = dados.categoriaProduto();
-            this.material = dados.material();
-            this.unidadeDimensao = dados.unidadeDimensao();
-            this.unidadePeso = dados.unidadePeso();
-            this.unidadeVolume = dados.unidadeVolume();
+            this.quantidade = dados.quantidade();
+            this.qtd_minima = dados.qtd_minima();
+            this.categoriaProduto = CategoriaProduto.fromDescricao(dados.categoriaProduto().getDescricao());
+            this.material = Material.fromDescricao(dados.material().getDescricao());
             this.ativo = true;
         }
 
@@ -104,13 +96,10 @@ public class Produto {
             this.sku = Optional.ofNullable(dados.sku()).orElse(this.sku);
             this.precoVenda = Optional.ofNullable(dados.precoVenda()).orElse(this.precoVenda);
             this.precoCusto = Optional.ofNullable(dados.precoCusto()).orElse(this.precoCusto);
-            this.qtdEstoque = Optional.ofNullable(dados.qtdEstoque()).orElse(this.qtdEstoque);
-            this.qtdMinimaEstoque = Optional.ofNullable(dados.qtdMinimaEstoque()).orElse(this.qtdMinimaEstoque);
+            this.quantidade = Optional.ofNullable(dados.quantidade()).orElse(this.quantidade);
+            this.qtd_minima = Optional.ofNullable(dados.qtd_minima()).orElse(this.qtd_minima);
             this.categoriaProduto = Optional.ofNullable(dados.categoriaProduto()).orElse(this.categoriaProduto);
             this.material = Optional.ofNullable(dados.material()).orElse(this.material);
-            this.unidadeDimensao = Optional.ofNullable(dados.unidadeDimensao()).orElse(this.unidadeDimensao);
-            this.unidadePeso = Optional.ofNullable(dados.unidadePeso()).orElse(this.unidadePeso);
-            this.unidadeVolume = Optional.ofNullable(dados.unidadeVolume()).orElse(this.unidadeVolume);
         }
     }
 
