@@ -10,26 +10,17 @@ public record DadosAtualizarProduto(
 
         @NotNull
         Long id,
-        @NotBlank
         String produto,
-        @NotBlank
         String codigoBarras,
-        @NotNull
-        Fornecedor fornecedor,
-        @NotBlank
+        String fornecedor,
         String descricao,
         String marca,
         String modelo,
         String sku,
-        @NotNull
         BigDecimal precoVenda,
-        @NotNull
         BigDecimal precoCusto,
-        @NotNull
         Double quantidade,
-        @NotNull
         Double qtd_minima,
-        @NotNull
         CategoriaProduto categoriaProduto,
         Material material
 

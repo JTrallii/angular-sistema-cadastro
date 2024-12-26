@@ -89,7 +89,6 @@ public class Produto {
         if (dados != null) {
             this.produto = Optional.ofNullable(dados.produto()).orElse(this.produto);
             this.codigoBarras = Optional.ofNullable(dados.codigoBarras()).orElse(this.codigoBarras);
-            this.fornecedor = Optional.ofNullable(dados.fornecedor()).orElse(this.fornecedor);
             this.descricao = Optional.ofNullable(dados.descricao()).orElse(this.descricao);
             this.marca = Optional.ofNullable(dados.marca()).orElse(this.marca);
             this.modelo = Optional.ofNullable(dados.modelo()).orElse(this.modelo);

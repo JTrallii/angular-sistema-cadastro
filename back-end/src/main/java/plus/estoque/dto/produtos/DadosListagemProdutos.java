@@ -5,6 +5,7 @@ import plus.estoque.domain.fornecedor.Fornecedor;
 import plus.estoque.domain.produtos.Produto;
 import plus.estoque.domain.produtos.enums.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 public record DadosListagemProdutos(
 
@@ -30,7 +31,6 @@ public record DadosListagemProdutos(
                 produto.getPrecoCusto(), produto.getQuantidade(), produto.getQtd_minima(),
                 produto.getCategoriaProduto(), produto.getMaterial());
     }
-
 }
 
 

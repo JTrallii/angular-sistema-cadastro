@@ -27,6 +27,8 @@ public class ProdutoService {
     private FornecedorRepository fornecedorRepository;
 
     public Produto cadastrarProduto(@RequestBody @Valid DadosCadastroProduto dados) {
+        //Procura o fornecedor pelo nome passado no cadastro do produto, achando ele, retorna o
+        //fornecedor com todos os seus atributos
         Fornecedor fornecedor = fornecedorRepository.findByFornecedor(dados.fornecedor())
                 .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado !"));
 
@@ -38,12 +40,21 @@ public class ProdutoService {
         return produto;
     }
 
-    public List<DadosListagemProdutos> listarTodosProdutos() {
-        return produtoRepository.findAll()
-                .stream()
-                .map(DadosListagemProdutos::new)
-                .toList();
+    public List<DadosListagemProdutos> listarTodosProdutosAtivos() {
+        return produtoRepository.findAllByAtivoTrue() // Retorna Optional<List<Produto>>
+                .orElse(List.of()) // Substitui por uma lista vazia caso esteja vazio
+                .stream() // Converte a lista em um stream
+                .map(DadosListagemProdutos::new) // Mapeia Produto para DadosListagemProdutos
+                .toList(); // Converte de volta para lista
     }
+
+    public List<DadosListagemProdutos> listarTodosProdutos() {
+        return produtoRepository.findAll() // Retorna Optional<List<Produto>>
+                .stream() // Converte a lista em um stream
+                .map(DadosListagemProdutos::new) // Mapeia Produto para DadosListagemProdutos
+                .toList(); // Converte de volta para lista
+    }
+
 
     public DadosDetalhamentoProduto detalharProduto(@PathVariable Long id) {
         var produto = produtoRepository.getReferenceById(id);
@@ -52,7 +63,12 @@ public class ProdutoService {
 
     public Produto atualizarProduto(@RequestBody @Valid DadosAtualizarProduto dados) {
         var produto = produtoRepository.getReferenceById(dados.id());
+
+        Fornecedor fornecedor = fornecedorRepository.findByFornecedor(dados.fornecedor())
+                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado !"));
+
         produto.atualizarInformacoes(dados);
+        produto.setFornecedor(fornecedor);
         return produto;
     }
 
