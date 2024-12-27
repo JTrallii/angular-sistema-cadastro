@@ -8,13 +8,16 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import plus.estoque.domain.fornecedor.Fornecedor;
+import plus.estoque.dto.fornecedor.DadosAtualizacaoFornecedor;
 import plus.estoque.dto.fornecedor.DadosCadastroFornecedor;
 import plus.estoque.dto.fornecedor.DadosDetalhamentoFornecedor;
 import plus.estoque.dto.fornecedor.DadosListagemFornecedor;
 import plus.estoque.repository.fornecedor.FornecedorRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,9 +52,20 @@ public class FornecedorService {
         return new DadosDetalhamentoFornecedor(fornecedor);
     }
 
-//    public Page<DadosListagemFornecedor> listarFornecedores(Pageable paginacao) {
-//        return fornecedorRepository.findAll(paginacao).map(DadosListagemFornecedor::new);
-//    }
+    public Fornecedor atualizarFornecedor(@RequestBody @Valid DadosAtualizacaoFornecedor dados) {
+        var fornecedor = fornecedorRepository.getReferenceById(dados.id());
+
+        fornecedor.atualizarInformacoes(dados);
+        return fornecedor;
+    }
+
+    public void excluir(@PathVariable Long id) {
+        Optional<Fornecedor> fornecedor = fornecedorRepository.findById(id);
+        if (fornecedor.isPresent()) {
+            var fornecedorExluido = fornecedor.get();
+            fornecedorExluido.setAtivo(false);
+        }
+    }
 
 }
 

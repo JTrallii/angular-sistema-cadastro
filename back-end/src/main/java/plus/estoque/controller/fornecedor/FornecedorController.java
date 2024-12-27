@@ -23,9 +23,6 @@ public class FornecedorController {
     @Autowired
     private FornecedorService fornecedorService;
 
-    @Autowired
-    private FornecedorRepository fornecedorRepository;
-
     @PostMapping
     @Transactional
     public ResponseEntity<DadosDetalhamentoFornecedor> cadastrar(@RequestBody @Valid DadosCadastroFornecedor dados, UriComponentsBuilder uriBuilder) {
@@ -59,24 +56,17 @@ public class FornecedorController {
     @PutMapping
     @Transactional
     public ResponseEntity<DadosDetalhamentoFornecedor> atualizarFornecedor(@RequestBody @Valid DadosAtualizacaoFornecedor dados) {
-        var fornecedor = fornecedorRepository.getReferenceById(dados.id());
+        var fornecedor = fornecedorService.atualizarFornecedor(dados);
 
-        fornecedor.atualizarInformacoes(dados);
         return ResponseEntity.ok(new DadosDetalhamentoFornecedor(fornecedor));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Fornecedor> exluir(@PathVariable Long id) {
-        var fornecedor = fornecedorRepository.getReferenceById(id);
+        fornecedorService.excluir(id);
         return ResponseEntity.noContent().build();
     }
-
-//    @GetMapping
-//    public ResponseEntity<Page<DadosListagemFornecedor>>listarFornecedores(@PageableDefault(size = 10, sort = {"nomeFantasia"}) Pageable paginacao) {
-//        Page<DadosListagemFornecedor> page = fornecedorService.listarFornecedores(paginacao);
-//        return ResponseEntity.ok(page);
-//    }
 
 }
 
