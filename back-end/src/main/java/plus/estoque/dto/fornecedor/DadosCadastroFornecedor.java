@@ -21,8 +21,6 @@ public record DadosCadastroFornecedor(
         @NotBlank
         @Email
         String email1,
-        @NotBlank
-        @Email
         String email2,
         @NotNull
         @Valid

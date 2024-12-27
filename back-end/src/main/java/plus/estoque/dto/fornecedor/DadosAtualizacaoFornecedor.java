@@ -16,6 +16,6 @@ public record DadosAtualizacaoFornecedor(
         String telefone,
         String email1,
         String email2,
-        Endereco endereco
+        DadosEndereco endereco
 ) {
 }

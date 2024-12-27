@@ -23,9 +23,6 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @Autowired
-    private ProdutoRepository produtoRepository;
-
     @PostMapping
     @Transactional
     public ResponseEntity<DadosDetalhamentoProduto> cadastrar(@RequestBody @Valid DadosCadastroProduto dados, UriComponentsBuilder uriBuilder) {
@@ -59,18 +56,15 @@ public class ProdutoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoProduto> atualizar(@RequestBody @Valid DadosAtualizarProduto dados) {
-        var produto = produtoRepository.getReferenceById(dados.id());
-        produto.atualizarInformacoes(dados);
-
+    public ResponseEntity<DadosDetalhamentoProduto> atualizarProduto(@RequestBody @Valid DadosAtualizarProduto dados) {
+        var produto = produtoService.atualizarProduto(dados);
         return ResponseEntity.ok(new DadosDetalhamentoProduto(produto));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Produto> excluir(@PathVariable Long id) {
-        var produto = produtoRepository.getReferenceById(id);
-        produto.excluir();
+        produtoService.excluirProduto(id);
 
         return ResponseEntity.noContent().build();
     }
