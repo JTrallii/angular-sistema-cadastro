@@ -1,1 +1,25 @@
-<p>compras works!</p>
+<section class="container">
+  <h1>COMPRAS</h1>
+  <div class="container__botoes">
+    <app-botao-principal
+      [color]="texto"
+      [backgroundColor]="botao_listar"
+      [hoverBackgroundColor]="botao_listar_hover"
+      [font_size]="font_size"
+      >CADASTRAR NOTA FISCAL</app-botao-principal
+    >
+    <a routerLink="/compras/nota-fiscal">
+      <app-botao-principal
+        [color]="texto"
+        [backgroundColor]="botao_listar"
+        [hoverBackgroundColor]="botao_listar_hover"
+        [font_size]="font_size"
+      >
+        BUSCAR NOTA FISCAL
+      </app-botao-principal>
+    </a>
+  </div>
+  <div class="container__nota">
+    <router-outlet></router-outlet>
+  </div>
+</section>

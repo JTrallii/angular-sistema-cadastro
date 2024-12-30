@@ -1,0 +1,22 @@
+
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  &__botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

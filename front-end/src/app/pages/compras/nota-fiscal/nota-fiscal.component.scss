@@ -1,14 +1,17 @@
-@import "../../../style/abstract/media-queries";
-@import "../../../style/abstract/mixins";
-@import "../../../style/abstract/variaveis";
+
+
+@import "../../../../style/abstract/media-queries";
+@import "../../../../style/abstract/mixins";
+@import "../../../../style/abstract/variaveis";
 
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 0.5rem;
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 900;
     margin-bottom: 2rem;
   }
@@ -19,14 +22,34 @@
     padding: 1rem;
   }
 
-  &__produto,
-  &__fornecedor,
-  &__quantidade,
-  &__preco,
-  &__descricao {
+  &__dados {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
+
+    &__nota_fiscal,
+    &__chave_acesso {
+      @include width(50%)
+    }
+
+    &__serie {
+      @include width(20%)
+    }
+
+    &__data_emissao,
+    &__data_recebimento {
+      @include width(40%)
+    }
+
+    &__fornecedor {
+      @include width(100%)
+    }
+
+    &__cnpj,
+    &__inscricao_estadual {
+      @include width(20%)
+    }
+
   }
 
   label {
@@ -44,22 +67,24 @@
   }
 }
 
-.container__produto__nome,
-.container__fornecedor__nome {
+
+
+.container__dados__nome,
+.container__dados__nome {
   width: 80%;
 }
 
 .container__produto__cdg_barras,
-.container__fornecedor__sku {
+.container__dados__sku {
   width: 20%;
 }
 
-.container__quantidade__qtd_minima,
-.container__quantidade__quantidade,
-.container__quantidade__und_medida,
-.container__preco__custo_compra,
-.container__preco__custo_venda,
-.container__preco__categoria {
+.container__dados__qtd_minima,
+.container__dados__quantidade,
+.container__dados__und_medida,
+.container__dados__custo_compra,
+.container__dados__custo_venda,
+.container__dados__categoria {
   width: 33%;
 }
 

@@ -7,6 +7,7 @@ import { CaixaComponent } from './pages/caixa/caixa.component';
 import { ComprasComponent } from './pages/compras/compras.component';
 import { AdministracaoComponent } from './pages/administracao/administracao.component';
 import { ListaVendasProdutosComponent } from './pages/vendas/lista-vendas-produtos/lista-vendas-produtos.component';
+import { NotaFiscalComponent } from './pages/compras/nota-fiscal/nota-fiscal.component';
 
 export const routes: Routes = [
   {
@@ -37,7 +38,13 @@ export const routes: Routes = [
   },
   {
     path: "compras",
-    component: ComprasComponent
+    component: ComprasComponent,
+    children:[
+      {
+        path: "nota-fiscal",
+        component: NotaFiscalComponent
+      }
+    ]
   },
   {
     path: "administracao",

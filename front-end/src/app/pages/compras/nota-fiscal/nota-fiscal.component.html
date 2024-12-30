@@ -1,11 +1,13 @@
 
 
-<section class="container"> 
-  <h1>CADASTRO DE PRODUTOS</h1>
-  <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
-    <div class="container__produto">
-      <div class="container__produto__nome">
-        <label class="block" for="produto">PRODUTO:</label>
+
+
+<section class="container">
+  <h1>CADASTRO DE NOTA FISCAL</h1>
+  <form action="" class="" #form="ngForm">
+    <div class="container__dados">
+      <div class="container__dados__nota_fiscal">
+        <label class="block" for="produto">NÚMERO DA NOTA FISCAL:</label>
         <input
           class="input"
           type="text"
@@ -24,35 +26,108 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__cdg_barras">
-        <label class="block" for="cdg_barras">CODIGO DE BARRAS:</label>
+      <div class="container__dados__chave_acesso">
+        <label class="block" for="chave_acesso">CHAVE DE ACESSO:</label>
         <input
           class="input"
           type="text"
-          name="cdg_barras"
+          name="chave_acesso"
           ngModel
-          #cdg_barras="ngModel"
+          #chave_acesso="ngModel"
           required
           pattern="^\d{7,13}$"
         />
         <div
           *ngIf="
-            (cdg_barras?.invalid && cdg_barras?.touched) || cdg_barras?.dirty
+            (chave_acesso?.invalid && chave_acesso?.touched) || chave_acesso?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="cdg_barras?.errors?.['required']">
-            O código de barras precisa ser cadastrado!
+          <app-mensagem-erro-validacao *ngIf="chave_acesso?.errors?.['required']">
+            A chave de acesso precisa ser cadastrado!
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="cdg_barras?.errors?.['pattern']">
-            O código de barras precisa ser em números e ter de 7 a 13
+          <app-mensagem-erro-validacao *ngIf="chave_acesso?.errors?.['pattern']">
+            A chave de acesso precisa ser em números e ter de 7 a 13
             caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
     </div>
-    <div class="container__fornecedor">
-      <div class="container__fornecedor__nome">
+    <div class="container__dados">
+      <div class="container__dados__serie">
+        <label class="block" for="serie">SÉRIE:</label>
+        <input
+          class="input"
+          type="text"
+          name="serie"
+          ngModel
+          required
+          minlength="3"
+          #serie="ngModel"
+        />
+        <div
+          *ngIf="
+            (serie?.invalid && serie?.touched) || serie?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao *ngIf="serie?.errors?.['required']">
+            O nome do serie precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao
+            *ngIf="serie?.errors?.['minlength']"
+          >
+            O nome do serie precisa ter pelo menos 3 caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__dados__data_emissao">
+        <label class="block" for="data_emissao">DATA DE EMISSÃO:</label>
+        <input
+          class="input"
+          type="text"
+          name="data_emissao"
+          ngModel
+          minlength="1"
+          #data_emissao="ngModel"
+          pattern="^[A-Za-z]+$"
+        />
+        <div
+          *ngIf="(data_emissao?.invalid && data_emissao?.touched) || data_emissao?.dirty"
+        >
+          <app-mensagem-erro-validacao *ngIf="data_emissao?.errors?.['minlength']">
+            O data_emissao precisa ter pelo menos 1 caracteres!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="data_emissao?.errors?.['pattern']">
+            O data_emissao precisa ser apenas caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__dados__data_recebimento">
+        <label class="block" for="data_recebimento">DATA DE RECEBIMENTO:</label>
+        <input
+          class="input"
+          type="text"
+          name="data_recebimento"
+          ngModel
+          minlength="1"
+          #data_recebimento="ngModel"
+          pattern="^[A-Za-z]+$"
+        />
+        <div
+          *ngIf="(data_recebimento?.invalid && data_recebimento?.touched) || data_recebimento?.dirty"
+        >
+          <app-mensagem-erro-validacao *ngIf="data_recebimento?.errors?.['minlength']">
+            O data_recebimento precisa ter pelo menos 1 caracteres!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="data_recebimento?.errors?.['pattern']">
+            O data_recebimento precisa ser apenas caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+    </div>
+
+    <div class="container__dados">
+      <div class="container__dados__fornecedor">
         <label class="block" for="fornecedor">FORNECEDOR:</label>
         <input
           class="input"
@@ -60,8 +135,9 @@
           name="fornecedor"
           ngModel
           required
-          minlength="3"
           #fornecedor="ngModel"
+          pattern="^\d{1,9}$"
+          maxlength="9"
         />
         <div
           *ngIf="
@@ -69,120 +145,17 @@
           "
         >
           <app-mensagem-erro-validacao *ngIf="fornecedor?.errors?.['required']">
-            O nome do fornecedor precisa ser cadastrado!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao
-            *ngIf="fornecedor?.errors?.['minlength']"
-          >
-            O nome do fornecedor precisa ter pelo menos 3 caracteres!
-          </app-mensagem-erro-validacao>
-        </div>
-      </div>
-      <div class="container__fornecedor__sku">
-        <label class="block" for="sku">SKU:</label>
-        <input
-          class="input"
-          type="text"
-          name="sku"
-          ngModel
-          minlength="1"
-          #sku="ngModel"
-          pattern="^[A-Za-z]+$"
-        />
-        <div
-          *ngIf="(sku?.invalid && sku?.touched) || sku?.dirty"
-        >
-          <app-mensagem-erro-validacao *ngIf="sku?.errors?.['minlength']">
-            O SKU precisa ter pelo menos 1 caracteres!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="sku?.errors?.['pattern']">
-            O SKU precisa ser apenas caracteres!
-          </app-mensagem-erro-validacao>
-        </div>
-      </div>
-    </div>
-    <div class="container__quantidade">
-      <div class="container__quantidade__qtd_minima">
-        <label class="block" for="qtd_minima">QUANTIDADE MÍNIMA:</label>
-        <input
-          class="input"
-          type="text"
-          name="qtd_minima"
-          ngModel
-          required
-          #qtd_minima="ngModel"
-          pattern="^\d{1,9}$"
-          maxlength="9"
-        />
-        <div
-          *ngIf="
-            (qtd_minima?.invalid && qtd_minima?.touched) || qtd_minima?.dirty
-          "
-        >
-          <app-mensagem-erro-validacao *ngIf="qtd_minima?.errors?.['required']">
             A quantidade mínima precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="qtd_minima?.errors?.['pattern']">
+          <app-mensagem-erro-validacao *ngIf="fornecedor?.errors?.['pattern']">
             A quantidade mínima precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__quantidade__quantidade">
-        <label class="block" for="quantidade">QUANTIDADE:</label>
-        <input
-          class="input"
-          type="text"
-          name="quantidade"
-          ngModel
-          required
-          #quantidade="ngModel"
-          maxlength="9"
-          pattern="^\d{1,9}$"
-        />
-        <div
-          *ngIf="
-            (quantidade?.invalid && quantidade?.touched) || quantidade?.dirty
-          "
-        >
-          <app-mensagem-erro-validacao *ngIf="quantidade?.errors?.['required']">
-            A quantidade precisa ser cadastrado !
-          </app-mensagem-erro-validacao>
-
-          <app-mensagem-erro-validacao *ngIf="quantidade?.errors?.['pattern']">
-            A quantidade precisa ser númerico !
-          </app-mensagem-erro-validacao>
-        </div>
-      </div>
-      <div class="container__quantidade__und_medida">
-        <label class="block" for="und_medida">UN. DE MEDIDA:</label>
-        <input
-          class="input"
-          type="text"
-          name="und_medida"
-          ngModel
-          required
-          minlength="1"
-          #un_medida="ngModel"
-          pattern="^[A-Za-z]+$"
-        />
-        <div
-          *ngIf="(un_medida?.invalid && un_medida?.touched) || un_medida?.dirty"
-        >
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['required']">
-            A unidade de medida precisa ser cadastrado!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['minlength']">
-            A unidade de medida precisa ter pelo menos 1 caracteres!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['pattern']">
-            A unidade de medida precisa ser apenas caracteres!
-          </app-mensagem-erro-validacao>
-        </div>
-      </div>
     </div>
-    <div class="container__preco">
-      <div class="container__preco__custo_compra">
+    <div class="container__dados">
+      <div class="container__dados__custo_compra">
         <label class="block" for="custo_compra">CUSTO DE COMPRA:</label>
         <input
           class="input"
@@ -213,7 +186,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__preco__custo_venda">
+      <div class="container__dados__custo_venda">
         <label class="block" for="custo_venda">CUSTO DE VENDA:</label>
         <input
           class="input"
@@ -240,7 +213,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__preco__categoria">
+      <div class="container__dados__categoria">
         <label class="block" for="categoria">CATEGORIA:</label>
         <input
           class="input"
@@ -263,7 +236,7 @@
         </div>
       </div>
     </div>
-    <div class="container__descricao">
+    <div class="container__dados">
       <div class="descricao">
         <label class="block" for="descricao">DESCRIÇÃO DO PRODUTO:</label>
         <textarea
@@ -315,3 +288,4 @@
     </div>
   </form>
 </section>
+
