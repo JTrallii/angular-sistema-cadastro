@@ -22,14 +22,15 @@ public record DadosListagemProdutos(
         Double estoque,
         Double estoque_minimo,
         CategoriaProduto categoriaProduto,
-        Material material
+        Material material,
+        UnidadeMedida unidade_medida
 ) {
 
     public DadosListagemProdutos(Produto produto) {
         this(produto.getProduto(), produto.getCodigo_barras(), produto.getFornecedor(), produto.getDescricao(),
                 produto.getMarca(), produto.getModelo(), produto.getSku(), produto.getPreco_venda(),
                 produto.getPreco_custo(), produto.getEstoque(), produto.getEstoque_minimo(),
-                produto.getCategoriaProduto(), produto.getMaterial());
+                produto.getCategoriaProduto(), produto.getMaterial(), produto.getUnidade_medida());
     }
 }
 

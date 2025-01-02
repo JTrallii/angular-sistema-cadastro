@@ -25,7 +25,7 @@ public record DadosAtualizarProduto(
         Double qtd_minima,
         CategoriaProduto categoriaProduto,
         Material material,
-        UnidadeMedida und_medida
+        UnidadeMedida unidade_medida
 
 ) {
 }

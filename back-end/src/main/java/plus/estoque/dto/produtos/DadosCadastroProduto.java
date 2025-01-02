@@ -32,6 +32,6 @@ public record DadosCadastroProduto(
         @NotNull
         Material material,
         @NotNull
-        UnidadeMedida und_medida
+        UnidadeMedida unidade_medida
 
 ) {}

@@ -42,6 +42,6 @@ public record DadosDetalhamentoProduto(
                 produto.getEstoque_minimo(),
                 produto.getCategoriaProduto(),
                 produto.getMaterial(),
-                produto.getUnd_medida());
+                produto.getUnidade_medida());
     }
 }

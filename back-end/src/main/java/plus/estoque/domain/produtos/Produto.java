@@ -44,7 +44,7 @@ public class Produto {
     private Double estoque;
 
     @Enumerated(EnumType.STRING)
-    private UnidadeMedida und_medida;
+    private UnidadeMedida unidade_medida;
 
     @Column(nullable = false)
     private BigDecimal preco_custo;
