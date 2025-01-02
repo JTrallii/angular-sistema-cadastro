@@ -1,13 +1,12 @@
 
 
-<section class="container"> 
+<section class="container">
   <h1>CADASTRO DE PRODUTOS</h1>
   <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
     <div class="container__produto">
       <div class="container__produto__nome">
-        <label class="block" for="produto">PRODUTO:</label>
+        <label for="produto">PRODUTO:</label>
         <input
-          class="input"
           type="text"
           name="produto"
           ngModel
@@ -25,9 +24,8 @@
         </div>
       </div>
       <div class="container__produto__cdg_barras">
-        <label class="block" for="cdg_barras">CODIGO DE BARRAS:</label>
+        <label for="cdg_barras">CODIGO DE BARRAS:</label>
         <input
-          class="input"
           type="text"
           name="cdg_barras"
           ngModel
@@ -51,11 +49,10 @@
         </div>
       </div>
     </div>
-    <div class="container__fornecedor">
-      <div class="container__fornecedor__nome">
-        <label class="block" for="fornecedor">FORNECEDOR:</label>
+    <div class="container__produto">
+      <div class="container__produto__fornecedor">
+        <label for="fornecedor">FORNECEDOR:</label>
         <input
-          class="input"
           type="text"
           name="fornecedor"
           ngModel
@@ -78,10 +75,9 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__fornecedor__sku">
-        <label class="block" for="sku">SKU:</label>
+      <div class="container__produto__sku">
+        <label for="sku">SKU:</label>
         <input
-          class="input"
           type="text"
           name="sku"
           ngModel
@@ -101,63 +97,60 @@
         </div>
       </div>
     </div>
-    <div class="container__quantidade">
-      <div class="container__quantidade__qtd_minima">
-        <label class="block" for="qtd_minima">QUANTIDADE MÍNIMA:</label>
+    <div class="container__produto">
+      <div class="container__produto__estoque_minimo">
+        <label for="estoque_minimo">ESTOQUE MÍNIMO:</label>
         <input
-          class="input"
           type="text"
-          name="qtd_minima"
+          name="estoque_minimo"
           ngModel
           required
-          #qtd_minima="ngModel"
+          #estoque_minimo="ngModel"
           pattern="^\d{1,9}$"
           maxlength="9"
         />
         <div
           *ngIf="
-            (qtd_minima?.invalid && qtd_minima?.touched) || qtd_minima?.dirty
+            (estoque_minimo?.invalid && estoque_minimo?.touched) || estoque_minimo?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="qtd_minima?.errors?.['required']">
+          <app-mensagem-erro-validacao *ngIf="estoque_minimo?.errors?.['required']">
             A quantidade mínima precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="qtd_minima?.errors?.['pattern']">
+          <app-mensagem-erro-validacao *ngIf="estoque_minimo?.errors?.['pattern']">
             A quantidade mínima precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__quantidade__quantidade">
-        <label class="block" for="quantidade">QUANTIDADE:</label>
+      <div class="container__produto__estoque">
+        <label for="estoque">ESTOQUE:</label>
         <input
-          class="input"
           type="text"
-          name="quantidade"
+          name="estoque"
           ngModel
           required
-          #quantidade="ngModel"
+          #estoque="ngModel"
           maxlength="9"
           pattern="^\d{1,9}$"
         />
         <div
           *ngIf="
-            (quantidade?.invalid && quantidade?.touched) || quantidade?.dirty
+            (estoque?.invalid && estoque?.touched) || estoque?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="quantidade?.errors?.['required']">
-            A quantidade precisa ser cadastrado !
+          <app-mensagem-erro-validacao *ngIf="estoque?.errors?.['required']">
+            A estoque precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="quantidade?.errors?.['pattern']">
-            A quantidade precisa ser númerico !
+          <app-mensagem-erro-validacao *ngIf="estoque?.errors?.['pattern']">
+            A estoque precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__quantidade__und_medida">
-        <label class="block" for="und_medida">UN. DE MEDIDA:</label>
+      <div class="container__produto__und_medida">
+        <label for="und_medida">UN. DE MEDIDA:</label>
         <input
-          class="input"
           type="text"
           name="und_medida"
           ngModel
@@ -181,69 +174,66 @@
         </div>
       </div>
     </div>
-    <div class="container__preco">
-      <div class="container__preco__custo_compra">
-        <label class="block" for="custo_compra">CUSTO DE COMPRA:</label>
+    <div class="container__produto">
+      <div class="container__produto__preco_compra">
+        <label for="preco_compra">PREÇO DE COMPRA:</label>
         <input
-          class="input"
           type="text"
-          name="custo_compra"
+          name="preco_compra"
           ngModel
           required
-          #custo_compra="ngModel"
+          #preco_compra="ngModel"
           pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})$"
         />
         <div
           *ngIf="
-            (custo_compra?.invalid && custo_compra?.touched) ||
-            custo_compra?.dirty
+            (preco_compra?.invalid && preco_compra?.touched) ||
+            preco_compra?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="custo_compra?.errors?.['required']"
+            *ngIf="preco_compra?.errors?.['required']"
           >
-            O custo de compra precisa ser cadastrado !
+            O preço de compra precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao
-            *ngIf="custo_compra?.errors?.['pattern']"
+            *ngIf="preco_compra?.errors?.['pattern']"
           >
-            O custo de compra precisa ser númerico e seguir o exemplo: 1.525,00
+            O preço de compra precisa ser númerico e seguir o exemplo: 1.525,00
             !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__preco__custo_venda">
-        <label class="block" for="custo_venda">CUSTO DE VENDA:</label>
+      <div class="container__produto__preco_venda">
+        <label for="preco_venda">PREÇO DE VENDA:</label>
         <input
-          class="input"
           type="text"
-          name="custo_venda"
+          name="preco_venda"
           ngModel
           required
-          #custo_venda="ngModel"
+          #preco_venda="ngModel"
           pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})?$"
         />
         <div
           *ngIf="
-            (custo_venda?.invalid && custo_venda?.touched) || custo_venda?.dirty
+            (preco_venda?.invalid && preco_venda?.touched) || preco_venda?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="custo_venda?.errors?.['required']"
+            *ngIf="preco_venda?.errors?.['required']"
           >
             O custo de venda precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="custo_venda?.errors?.['pattern']">
+          <app-mensagem-erro-validacao *ngIf="preco_venda?.errors?.['pattern']">
             O custo de venda precisa ser númerico e seguir o exemplo: 1.525,00 !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__preco__categoria">
-        <label class="block" for="categoria">CATEGORIA:</label>
+      <div class="container__produto__categoria">
+        <label for="categoria">CATEGORIA:</label>
         <input
-          class="input"
           type="text"
           name="categoria"
           ngModel
@@ -263,11 +253,10 @@
         </div>
       </div>
     </div>
-    <div class="container__descricao">
-      <div class="descricao">
-        <label class="block" for="descricao">DESCRIÇÃO DO PRODUTO:</label>
+    <div class="container__produto">
+      <div class="container__produto__descricao">
+        <label for="descricao">DESCRIÇÃO DO PRODUTO:</label>
         <textarea
-          class="textarea"
           name="descricao"
           id="descricao"
           ngModel
