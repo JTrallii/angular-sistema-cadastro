@@ -41,25 +41,31 @@
     gap: 1rem;
     margin-bottom: 1rem;
 
-    &__nome,
     &__fornecedor {
       width: 80%;
     }
 
-    &__cdg_barras,
     &__sku {
       width: 20%;
     }
 
-    &__estoque_minimo,
-    &__estoque,
     &__und_medida,
     &__preco_compra,
     &__preco_venda,
+    &__preco_medio {
+      width: 25%;
+    }
+
+    &__cdg_barras_caixa,
+    &__cdg_barras_produto,
+    &__cdg_barras_secundario,
+    &__estoque_minimo,
+    &__estoque,
     &__categoria {
       width: 33%;
     }
 
+    &__nome,
     &__descricao {
       width: 100%;
 

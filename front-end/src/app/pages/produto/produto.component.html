@@ -1,5 +1,3 @@
-
-
 <section class="container">
   <h1>CADASTRO DE PRODUTOS</h1>
   <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
@@ -23,26 +21,83 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__cdg_barras">
-        <label for="cdg_barras">CODIGO DE BARRAS:</label>
+    </div>
+    <div class="container__produto">
+      <div class="container__produto__cdg_barras_caixa">
+        <label for="cdg_barras_caixa">CODIGO DE BARRAS DA CAIXA:</label>
         <input
           type="text"
-          name="cdg_barras"
+          name="cdg_barras_caixa"
           ngModel
-          #cdg_barras="ngModel"
-          required
+          #cdg_barras_caixa="ngModel"
           pattern="^\d{7,13}$"
+          maxlength="13"
         />
         <div
           *ngIf="
-            (cdg_barras?.invalid && cdg_barras?.touched) || cdg_barras?.dirty
+            (cdg_barras_caixa?.invalid && cdg_barras_caixa?.touched) ||
+            cdg_barras_caixa?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="cdg_barras?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="cdg_barras_caixa?.errors?.['pattern']"
+          >
+            O código de barras precisa ser em números e ter de 7 a 13
+            caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__produto__cdg_barras_produto">
+        <label for="cdg_barras_produto">CODIGO DE BARRAS DO PRODUTO:</label>
+        <input
+          type="text"
+          name="cdg_barras_produto"
+          ngModel
+          #cdg_barras_produto="ngModel"
+          required
+          pattern="^\d{7,13}$"
+          maxlength="13"
+        />
+        <div
+          *ngIf="
+            (cdg_barras_produto?.invalid && cdg_barras_produto?.touched) ||
+            cdg_barras_produto?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="cdg_barras_produto?.errors?.['required']"
+          >
             O código de barras precisa ser cadastrado!
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="cdg_barras?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="cdg_barras_produto?.errors?.['pattern']"
+          >
+            O código de barras precisa ser em números e ter de 7 a 13
+            caracteres!
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__produto__cdg_barras_secundario">
+        <label for="cdg_barras_secundario">CODIGO DE BARRAS SECUNDÁRIO:</label>
+        <input
+          type="text"
+          name="cdg_barras_secundario"
+          ngModel
+          #cdg_barras_secundario="ngModel"
+          pattern="^\d{7,13}$"
+          maxlength="13"
+        />
+        <div
+          *ngIf="
+            (cdg_barras_secundario?.invalid &&
+              cdg_barras_secundario?.touched) ||
+            cdg_barras_secundario?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="cdg_barras_secundario?.errors?.['pattern']"
+          >
             O código de barras precisa ser em números e ter de 7 a 13
             caracteres!
           </app-mensagem-erro-validacao>
@@ -85,9 +140,7 @@
           #sku="ngModel"
           pattern="^[A-Za-z]+$"
         />
-        <div
-          *ngIf="(sku?.invalid && sku?.touched) || sku?.dirty"
-        >
+        <div *ngIf="(sku?.invalid && sku?.touched) || sku?.dirty">
           <app-mensagem-erro-validacao *ngIf="sku?.errors?.['minlength']">
             O SKU precisa ter pelo menos 1 caracteres!
           </app-mensagem-erro-validacao>
@@ -111,14 +164,19 @@
         />
         <div
           *ngIf="
-            (estoque_minimo?.invalid && estoque_minimo?.touched) || estoque_minimo?.dirty
+            (estoque_minimo?.invalid && estoque_minimo?.touched) ||
+            estoque_minimo?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="estoque_minimo?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="estoque_minimo?.errors?.['required']"
+          >
             A quantidade mínima precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="estoque_minimo?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="estoque_minimo?.errors?.['pattern']"
+          >
             A quantidade mínima precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
@@ -134,11 +192,7 @@
           maxlength="9"
           pattern="^\d{1,9}$"
         />
-        <div
-          *ngIf="
-            (estoque?.invalid && estoque?.touched) || estoque?.dirty
-          "
-        >
+        <div *ngIf="(estoque?.invalid && estoque?.touched) || estoque?.dirty">
           <app-mensagem-erro-validacao *ngIf="estoque?.errors?.['required']">
             A estoque precisa ser cadastrado !
           </app-mensagem-erro-validacao>
@@ -148,28 +202,20 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__und_medida">
-        <label for="und_medida">UN. DE MEDIDA:</label>
+      <div class="container__produto__categoria">
+        <label for="categoria">CATEGORIA:</label>
         <input
           type="text"
-          name="und_medida"
+          name="categoria"
           ngModel
           required
-          minlength="1"
-          #un_medida="ngModel"
-          pattern="^[A-Za-z]+$"
+          #categoria="ngModel"
         />
         <div
-          *ngIf="(un_medida?.invalid && un_medida?.touched) || un_medida?.dirty"
+          *ngIf="(categoria?.invalid && categoria?.touched) || categoria?.dirty"
         >
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['required']">
-            A unidade de medida precisa ser cadastrado!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['minlength']">
-            A unidade de medida precisa ter pelo menos 1 caracteres!
-          </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['pattern']">
-            A unidade de medida precisa ser apenas caracteres!
+          <app-mensagem-erro-validacao *ngIf="categoria?.errors?.['required']">
+            A categoria precisa ser cadastrada !
           </app-mensagem-erro-validacao>
         </div>
       </div>
@@ -223,32 +269,62 @@
           <app-mensagem-erro-validacao
             *ngIf="preco_venda?.errors?.['required']"
           >
-            O custo de venda precisa ser cadastrado !
+            O preço de venda precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao *ngIf="preco_venda?.errors?.['pattern']">
-            O custo de venda precisa ser númerico e seguir o exemplo: 1.525,00 !
+            O preço de venda precisa ser númerico e seguir o exemplo: 1.525,00 !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__categoria">
-        <label for="categoria">CATEGORIA:</label>
+      <div class="container__produto__preco_medio">
+        <label for="preco_medio">PREÇO MÉDIO:</label>
         <input
           type="text"
-          name="categoria"
+          name="preco_medio"
           ngModel
-          required
-          #categoria="ngModel"
+          readonly
+          #preco_medio="ngModel"
+          pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})?$"
         />
         <div
           *ngIf="
-            (categoria?.invalid && categoria?.touched) || categoria?.dirty
+            (preco_medio?.invalid && preco_medio?.touched) || preco_medio?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="categoria?.errors?.['required']"
+            *ngIf="preco_medio?.errors?.['required']"
           >
-            O custo de venda precisa ser cadastrado !
+            O custo de medio precisa ser cadastrado !
+          </app-mensagem-erro-validacao>
+
+          <app-mensagem-erro-validacao *ngIf="preco_medio?.errors?.['pattern']">
+            O custo de medio precisa ser númerico e seguir o exemplo: 1.525,00 !
+          </app-mensagem-erro-validacao>
+        </div>
+      </div>
+      <div class="container__produto__und_medida">
+        <label for="und_medida">UN. DE MEDIDA:</label>
+        <input
+          type="text"
+          name="und_medida"
+          ngModel
+          required
+          minlength="1"
+          #un_medida="ngModel"
+          pattern="^[A-Za-z]+$"
+        />
+        <div
+          *ngIf="(un_medida?.invalid && un_medida?.touched) || un_medida?.dirty"
+        >
+          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['required']">
+            A unidade de medida precisa ser cadastrado!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['minlength']">
+            A unidade de medida precisa ter pelo menos 1 caracteres!
+          </app-mensagem-erro-validacao>
+          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['pattern']">
+            A unidade de medida precisa ser apenas caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
