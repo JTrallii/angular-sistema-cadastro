@@ -22,15 +22,14 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Setter
+    
     private Boolean ativo;
 
     @Column(nullable = false)
     private String produto;
 
     @Column(nullable = false, unique = true)
-    private String codigoBarras;
+    private String codigo_barras;
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
@@ -39,19 +38,19 @@ public class Produto {
     private String sku;
 
     @Column(nullable = false)
-    private Double qtd_minima;
+    private Double estoque_minimo;
 
     @Column(nullable = false)
-    private Double quantidade;
+    private Double estoque;
 
     @Enumerated(EnumType.STRING)
-    private UnidadeMedida unidadeMedida;
+    private UnidadeMedida und_medida;
 
     @Column(nullable = false)
-    private BigDecimal precoCusto;
+    private BigDecimal preco_custo;
 
     @Column(nullable = false)
-    private BigDecimal precoVenda;
+    private BigDecimal preco_venda;
 
     @Enumerated(EnumType.STRING)
     private CategoriaProduto categoriaProduto;
@@ -68,16 +67,16 @@ public class Produto {
 
     public Produto(DadosCadastroProduto dados) {
             this.produto = dados.produto();
-            this.codigoBarras = dados.codigoBarras();
+            this.codigo_barras = dados.codigo_barras();
             this.fornecedor = getFornecedor();
             this.descricao = dados.descricao();
             this.marca = dados.marca();
             this.modelo = dados.modelo();
             this.sku = dados.sku();
-            this.precoVenda = dados.precoVenda();
-            this.precoCusto = dados.precoCusto();
-            this.quantidade = dados.quantidade();
-            this.qtd_minima = dados.qtd_minima();
+            this.preco_venda = dados.preco_venda();
+            this.preco_custo = dados.preco_custo();
+            this.estoque = dados.estoque();
+            this.estoque_minimo = dados.estoque_minimo();
             this.categoriaProduto = CategoriaProduto.fromDescricao(dados.categoriaProduto().getDescricao());
             this.material = Material.fromDescricao(dados.material().getDescricao());
             this.ativo = true;
@@ -87,15 +86,15 @@ public class Produto {
     public void atualizarInformacoes(DadosAtualizarProduto dados) {
         if (dados != null) {
             this.produto = Optional.ofNullable(dados.produto()).orElse(this.produto);
-            this.codigoBarras = Optional.ofNullable(dados.codigoBarras()).orElse(this.codigoBarras);
+            this.codigo_barras = Optional.ofNullable(dados.codigoBarras()).orElse(this.codigo_barras);
             this.descricao = Optional.ofNullable(dados.descricao()).orElse(this.descricao);
             this.marca = Optional.ofNullable(dados.marca()).orElse(this.marca);
             this.modelo = Optional.ofNullable(dados.modelo()).orElse(this.modelo);
             this.sku = Optional.ofNullable(dados.sku()).orElse(this.sku);
-            this.precoVenda = Optional.ofNullable(dados.precoVenda()).orElse(this.precoVenda);
-            this.precoCusto = Optional.ofNullable(dados.precoCusto()).orElse(this.precoCusto);
-            this.quantidade = Optional.ofNullable(dados.quantidade()).orElse(this.quantidade);
-            this.qtd_minima = Optional.ofNullable(dados.qtd_minima()).orElse(this.qtd_minima);
+            this.preco_venda = Optional.ofNullable(dados.precoVenda()).orElse(this.preco_venda);
+            this.preco_custo = Optional.ofNullable(dados.precoCusto()).orElse(this.preco_custo);
+            this.estoque = Optional.ofNullable(dados.quantidade()).orElse(this.estoque);
+            this.estoque_minimo = Optional.ofNullable(dados.qtd_minima()).orElse(this.estoque_minimo);
             this.categoriaProduto = Optional.ofNullable(dados.categoriaProduto()).orElse(this.categoriaProduto);
             this.material = Optional.ofNullable(dados.material()).orElse(this.material);
         }

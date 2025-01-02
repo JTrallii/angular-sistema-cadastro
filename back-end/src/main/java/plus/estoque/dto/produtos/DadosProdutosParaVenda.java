@@ -13,7 +13,7 @@ public record DadosProdutosParaVenda(
 
 
         @NotNull
-        Double precoVenda,
+        Double preco_venda,
         @NotBlank
         String produto,
 

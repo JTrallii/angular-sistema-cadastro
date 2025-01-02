@@ -38,7 +38,7 @@ public class ItemVenda {
         this.venda = venda;
         this.produto = produto;
         this.quantidade = quantidade;
-        this.precoUnitario = produto.getPrecoVenda();
+        this.precoUnitario = produto.getPreco_venda();
         this.precoTotal = this.precoUnitario.multiply(BigDecimal.valueOf(quantidade));
     }
 }
