@@ -86,7 +86,7 @@ public class Produto {
     public void atualizarInformacoes(DadosAtualizarProduto dados) {
         if (dados != null) {
             this.produto = Optional.ofNullable(dados.produto()).orElse(this.produto);
-            this.codigo_barras = Optional.ofNullable(dados.codigoBarras()).orElse(this.codigo_barras);
+            this.codigo_barras = Optional.ofNullable(dados.codigo_barras()).orElse(this.codigo_barras);
             this.descricao = Optional.ofNullable(dados.descricao()).orElse(this.descricao);
             this.marca = Optional.ofNullable(dados.marca()).orElse(this.marca);
             this.modelo = Optional.ofNullable(dados.modelo()).orElse(this.modelo);

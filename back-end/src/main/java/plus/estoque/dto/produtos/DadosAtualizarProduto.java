@@ -13,7 +13,7 @@ public record DadosAtualizarProduto(
         @NotNull
         Boolean ativo,
         String produto,
-        String codigoBarras,
+        String codigo_barras,
         String fornecedor,
         String descricao,
         String marca,
