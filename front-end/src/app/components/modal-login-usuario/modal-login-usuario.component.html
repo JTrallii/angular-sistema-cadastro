@@ -20,17 +20,17 @@
       <p class="modal__container_p">LOGIN</p>
       <form
         class="borda modal__container_form"
-        (submit)="handleSubmit($event)"
+        [formGroup]="formlogin"
+        (ngSubmit)="efetuarLogin()"
       >
         <label htmlFor="email" class="display">
           E-mail:
           <input
             type="email"
-            name="email"
-            id="email"
-            data-test="email-input"
-            placeholder="Digite seu email"
-            [(ngModel)]="email"
+            formControlName="login"
+            id="login"
+            data-test="login-input"
+            placeholder="Digite seu e-mail"
             required
           />
         </label>
@@ -38,11 +38,10 @@
           Senha:
           <input
             type="password"
-            name="senha"
+            formControlName="senha"
             id="senha"
             data-test="senha-input"
             placeholder="Digite sua senha"
-            [(ngModel)]="senha"
             required
           />
           <span class="error">{{ error }}</span>

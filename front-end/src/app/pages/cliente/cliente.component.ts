@@ -1,4 +1,4 @@
-import { ConsultaCepService } from './../../service/consulta-cep.service';
+import { ConsultaCepService } from '../../service/consulta-cep/consulta-cep.service';
 import { Component } from '@angular/core';
 import { BotaoPrincipalComponent } from '../../components/botao-principal/botao-principal.component';
 import { FormsModule, NgForm, Validators } from '@angular/forms';

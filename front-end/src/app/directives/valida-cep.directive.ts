@@ -1,4 +1,4 @@
-import { ConsultaCepService } from './../service/consulta-cep.service';
+import { ConsultaCepService } from '../service/consulta-cep/consulta-cep.service';
 import { Directive } from '@angular/core';
 import { AbstractControl, AsyncValidator, NG_ASYNC_VALIDATORS, ValidationErrors } from '@angular/forms';
 import { Observable, map } from 'rxjs';

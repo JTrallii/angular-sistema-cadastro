@@ -62,8 +62,7 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
-  // salvarNomeUsuario(usuarioEncontrado: string) {
-  //   this.usuario = usuarioEncontrado;
-  // }
-
+  receberNomeUsuario(nome: string) {
+    this.usuario = nome; // Atualiza o nome do usuário logado
+  }
 }

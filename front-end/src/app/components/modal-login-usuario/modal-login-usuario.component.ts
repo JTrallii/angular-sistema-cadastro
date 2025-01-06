@@ -1,65 +1,65 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { LoginService } from '../../service/login/login.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-modal-login-usuario',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './modal-login-usuario.component.html',
-  styleUrl: './modal-login-usuario.component.scss'
+  styleUrl: './modal-login-usuario.component.scss',
 })
-
-
 export class ModalLoginUsuarioComponent {
   @Input() aberta: boolean = false;
   @Output() aoFechar = new EventEmitter<void>();
   @Output() aoEfetuarLogin = new EventEmitter<void>();
-  @Output() salvarNomeUsuario = new EventEmitter<void>();
-
-  constructor(private router: Router) {}
-
-
-  email: string = "";
-  senha: string = "";
+  @Output() nomeUsuario = new EventEmitter<string>();
+  formlogin!: FormGroup;
+  usuario = "";
   error: string = "";
-  isEmailValido: boolean = false;
-  isSenhaValido: boolean = false;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
-  resetFormulario() {
-    this.email = "";
-    this.senha = "";
+  ngOnInit(): void {
+    this.formlogin = this.formBuilder.group({
+      login: ["", [Validators.required]],
+      senha: ["", [Validators.required]],
+    });
   }
 
-  // validaEmail(email: string): boolean {
+  resetFormulario() {
+    this.formlogin.reset();
+  }
 
-  // }
+  efetuarLogin() {
+    if (this.formlogin.valid) {
+      const { login, senha } = this.formlogin.value;
+      const credenciais = { login, senha };
 
-  // validaSenha(email: string): boolean {
+      this.loginService.efetuarLogin(credenciais).subscribe({
+        next: (response) => {
+          this.usuario = response.nome;
+          this.nomeUsuario.emit(this.usuario);
+          this.aoEfetuarLogin.emit();
+          this.router.navigateByUrl("/produtos");
+        },
+        error: (erro) => console.error(erro),
+      });
 
-  // }
-
-  // if (this.validaEmail(this.email) && this.validaSenha(this.senha)) {
-  //   this.aoEfetuarLogin.emit();
-  //   // Aqui você pode adicionar a navegação, se necessário
-  //   // Ex: this.router.navigate(['/home/vendas']);
-  // }
-
-  handleSubmit(event: Event) {
-    event.preventDefault();
-    this.error = ''; // Limpa a mensagem de erro antes da validação
-    this.router.navigate(['/home/vendas']);
-
-    // if (this.validaEmail(this.email) && this.validaSenha(this.senha)) {
-    //   this.aoEfetuarLogin.emit();
-    //   // Aqui você pode adicionar a navegação, se necessário
-    //   // Ex: this.router.navigate(['/home/vendas']);
-    // }
+      this.resetFormulario();
+    }
   }
 }

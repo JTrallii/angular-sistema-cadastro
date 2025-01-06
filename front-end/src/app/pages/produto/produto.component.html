@@ -203,18 +203,23 @@
         </div>
       </div>
       <div class="container__produto__categoria">
-        <label for="categoria">CATEGORIA:</label>
+        <label for="categoria_produto">CATEGORIA:</label>
         <input
           type="text"
-          name="categoria"
+          name="categoria_produto"
           ngModel
           required
-          #categoria="ngModel"
+          #categoria_produto="ngModel"
         />
         <div
-          *ngIf="(categoria?.invalid && categoria?.touched) || categoria?.dirty"
+          *ngIf="
+            (categoria_produto?.invalid && categoria_produto?.touched) ||
+            categoria_produto?.dirty
+          "
         >
-          <app-mensagem-erro-validacao *ngIf="categoria?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="categoria_produto?.errors?.['required']"
+          >
             A categoria precisa ser cadastrada !
           </app-mensagem-erro-validacao>
         </div>
@@ -379,4 +384,11 @@
       >
     </div>
   </form>
+  <app-botao-principal
+    [color]="texto"
+    [backgroundColor]="excluir"
+    [hoverBackgroundColor]="excluir_hover"
+    (onClick)="listarTodosProdutos()"
+    >EXCLUIR</app-botao-principal
+  >
 </section>

@@ -21,6 +21,7 @@
           [aberta]="modalLoginUsuario"
           (aoFechar)="fecharModalLogin()"
           (aoEfetuarLogin)="aoEfetuarLogin()"
+          (nomeUsuario)="receberNomeUsuario($event)"
         ></app-modal-login-usuario>
 
         <app-botao-principal

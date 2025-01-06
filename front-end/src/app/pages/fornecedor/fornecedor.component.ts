@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BotaoPrincipalComponent } from '../../components/botao-principal/botao-principal.component';
 import { Router } from '@angular/router';
-import { ConsultaCepService } from '../../service/consulta-cep.service';
+import { ConsultaCepService } from '../../service/consulta-cep/consulta-cep.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MensagemErroValidacaoComponent } from '../../components/mensagem-erro-validacao/mensagem-erro-validacao.component';
 import { CommonModule } from '@angular/common';

@@ -1,9 +1,12 @@
+import { CadastrarProduto } from './../../utils/interface/ICadastrarProduto';
 import { Component } from '@angular/core';
 import { BotaoPrincipalComponent } from "../../components/botao-principal/botao-principal.component";
 import { FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MensagemErroValidacaoComponent } from "../../components/mensagem-erro-validacao/mensagem-erro-validacao.component";
+import { Produtoservice } from '../../service/produto/produto.service';
+import { ILogin } from '../../utils/interface/ILogin';
 
 @Component({
   selector: 'app-produto',
@@ -26,7 +29,9 @@ export class ProdutoComponent {
   excluir: "#ff0000" = "#ff0000";
   excluir_hover: "#da0000" = "#da0000";
 
-  constructor(private router: Router) {
+
+
+  constructor(private router: Router, private service: Produtoservice) {
   }
 
   cadastrar(form: NgForm) {
@@ -46,5 +51,10 @@ export class ProdutoComponent {
       const control = form.controls[field];
       control.markAsTouched();
     });
+  }
+
+  listarTodosProdutos() {
+    const listar =  this.service.listarTodosProdutos().subscribe();
+    console.log(listar);
   }
 }
