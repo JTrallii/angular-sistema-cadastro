@@ -22,7 +22,11 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./",  // Define a base da aplicação
+    "paths": {
+      "img/*": ["src/assets/img/*"]  // Faz o "mapeamento" para a pasta de imagens
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

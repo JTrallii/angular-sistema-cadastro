@@ -55,7 +55,7 @@ export class ModalLoginUsuarioComponent {
           this.usuario = response.nome;
           this.nomeUsuario.emit(this.usuario);
           this.aoEfetuarLogin.emit();
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl("/dashboard");
         },
         error: (erro) => console.error(erro),
       });

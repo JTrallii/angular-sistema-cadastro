@@ -2,7 +2,7 @@
 
 <header class="container header">
   <div class="container__menu">
-    <img src="/assets/logo.png" alt="logo" class="container__menu__logo"/>
+    <img src="/assets/img/logo.png" alt="logo" class="container__menu__logo"/>
     <section *ngIf="!usuarioLogado; else logado">
       <div class="container__menu__botoes">
         <app-botao-principal
@@ -44,9 +44,19 @@
     </section>
     <ng-template #logado>
       <div class="container__menu__logado">
-        <img src="../../../assets/circle-user-round.svg" alt="login" class="container__menu__logado__img_login" />
+        <img src="assets/img/circle-user-round.svg" alt="login" class="container__menu__logado__img_login" />
         <span class="container__menu__logado__login">Olá, {{ usuario }}</span>
-        <button (click)="aoEfetuarLogout()" class="botao botao-secundario">Sair</button>
+        <app-botao-principal
+          [color]="verde"
+          [backgroundColor]="transparente"
+          [hoverColor]="branco"
+          [hoverBackgroundColor]="verde"
+          [fontSize]="font_size"
+          [borda]="borda"
+          (click)="aoEfetuarLogout()"
+        >
+          Sair
+        </app-botao-principal>
       </div>
     </ng-template>
   </div>

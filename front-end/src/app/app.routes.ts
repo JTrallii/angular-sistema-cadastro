@@ -9,6 +9,7 @@ import { AdministracaoComponent } from './pages/administracao/administracao.comp
 import { ListaVendasProdutosComponent } from './pages/vendas/lista-vendas-produtos/lista-vendas-produtos.component';
 import { NotaFiscalComponent } from './pages/compras/nota-fiscal/nota-fiscal.component';
 import { PaginaPrincipalComponent } from './pages/pagina-inicial/pagina-inicial.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
 
@@ -19,6 +20,10 @@ export const routes: Routes = [
   {
     path: "home",
     component: PaginaPrincipalComponent
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent
   },
   {
     path: "produtos",

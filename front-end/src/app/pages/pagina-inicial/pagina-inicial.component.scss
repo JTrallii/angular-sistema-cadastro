@@ -1,0 +1,70 @@
+@import "../../../style/abstract/media-queries";
+@import "../../../style/abstract/mixins";
+@import "../../../style/abstract/variaveis";
+
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  flex: 1 0 auto;
+  background-image: linear-gradient(to bottom, #0e6655, #abebc6);
+  @include centralizar();
+
+  &__main {
+    @include centralizar();
+    flex-direction: column;
+    margin: 3rem 0;
+    gap: 2rem;
+
+    &__banner {
+      @include centralizar();
+      flex-direction: row;
+      gap: 7rem;
+      width: 70%;
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 900;
+        font-family: monospace;
+        letter-spacing: 0.3rem;
+        color: var(--branco);
+      }
+
+      img {
+        width: 20rem;
+      }
+    }
+
+    &__vantagem {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+    }
+
+    &__vantagens {
+      @include centralizar();
+      text-align: center;
+      gap: 2rem;
+
+      &__descricao {
+        font-size: 0.9rem;
+        font-weight: 600;
+        width: 130px;
+        line-height: 1.1rem;
+      }
+
+      img {
+        width: 70px;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+.vantagens__img {
+  width: 70px;
+  margin-bottom: 0.5rem;
+}
