@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalLoginUsuarioComponent } from "../modal-login-usuario/modal-login-usuario.component";
 import { ModalCadastroUsuarioComponent } from "../modal-cadastro-usuario/modal-cadastro-usuario.component";
@@ -19,6 +19,9 @@ import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.comp
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  @Output() loginEfetuado = new EventEmitter<boolean>();
+
   modalLoginUsuario = false;
   modalCadastroUsuario = false;
   usuario = "";
@@ -54,12 +57,15 @@ export class HeaderComponent {
   aoEfetuarLogin() {
     this.modalLoginUsuario = false;
     this.usuarioLogado = true;
-    this.router.navigate(['/home']);
+    this.loginEfetuado.emit(true);
+    this.router.navigate(['/dashboard']);
   }
 
   aoEfetuarLogout() {
     this.usuarioLogado = false;
-    this.router.navigate(['/']);
+    this.loginEfetuado.emit(false);
+    localStorage.removeItem("token");
+    this.router.navigate(['/home']);
   }
 
   receberNomeUsuario(nome: string) {

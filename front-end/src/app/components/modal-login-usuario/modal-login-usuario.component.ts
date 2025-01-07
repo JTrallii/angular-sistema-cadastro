@@ -51,10 +51,11 @@ export class ModalLoginUsuarioComponent {
 
       this.loginService.efetuarLogin(credenciais).subscribe({
         next: (response) => {
+          localStorage.setItem("token", response.tokenJWT);
           this.usuario = response.nome;
           this.nomeUsuario.emit(this.usuario);
           this.aoEfetuarLogin.emit();
-          this.router.navigateByUrl("/produtos");
+          this.router.navigateByUrl("/");
         },
         error: (erro) => console.error(erro),
       });

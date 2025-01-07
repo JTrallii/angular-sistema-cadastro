@@ -1,6 +1,9 @@
+
+
+
 <div class="container">
-  <app-header></app-header>
-  <main class="main__container">
+  <app-header (loginEfetuado)="mostrarMenu($event)"></app-header>
+  <main *ngIf="loginEfetuado; else deslogado" class="main__container">
     <nav class="main__container__menu">
       <app-menu-principal></app-menu-principal>
     </nav>
@@ -8,5 +11,8 @@
       <router-outlet></router-outlet>
     </section>
   </main>
+  <ng-template #deslogado>
+    <app-pagina-principal></app-pagina-principal>
+  </ng-template>
   <app-footer></app-footer>
 </div>

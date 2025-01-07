@@ -8,8 +8,18 @@ import { ComprasComponent } from './pages/compras/compras.component';
 import { AdministracaoComponent } from './pages/administracao/administracao.component';
 import { ListaVendasProdutosComponent } from './pages/vendas/lista-vendas-produtos/lista-vendas-produtos.component';
 import { NotaFiscalComponent } from './pages/compras/nota-fiscal/nota-fiscal.component';
+import { PaginaPrincipalComponent } from './pages/pagina-inicial/pagina-inicial.component';
 
 export const routes: Routes = [
+
+  { path: "",
+    redirectTo: "/home",
+    pathMatch: "full"
+  },
+  {
+    path: "home",
+    component: PaginaPrincipalComponent
+  },
   {
     path: "produtos",
     component: ProdutoComponent
