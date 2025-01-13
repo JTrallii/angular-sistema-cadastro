@@ -10,6 +10,7 @@ import { ListaVendasProdutosComponent } from './pages/vendas/lista-vendas-produt
 import { NotaFiscalComponent } from './pages/compras/nota-fiscal/nota-fiscal.component';
 import { PaginaPrincipalComponent } from './pages/pagina-inicial/pagina-inicial.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CadastrarFuncionarioComponent } from './pages/administracao/cadastrar-funcionario/cadastrar-funcionario.component';
 
 export const routes: Routes = [
 
@@ -63,6 +64,12 @@ export const routes: Routes = [
   },
   {
     path: "administracao",
-    component: AdministracaoComponent
+    component: AdministracaoComponent,
+    children:[
+      {
+        path: "cadastrar-funcionario",
+        component: CadastrarFuncionarioComponent
+      }
+    ]
   }
 ];

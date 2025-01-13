@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MensagemErroValidacaoComponent } from "../../components/mensagem-erro-validacao/mensagem-erro-validacao.component";
 import { Produtoservice } from '../../service/produto/produto.service';
-import { ILogin } from '../../utils/interface/ILogin';
 
 @Component({
   selector: 'app-produto',
@@ -39,7 +38,8 @@ export class ProdutoComponent {
     this.marcarCamposComoTouched(form);
 
     if (form.valid) {
-      this.router.navigateByUrl("/vendas");
+      console.log(form.value);
+      // this.router.navigate(["/vendas"]);
     } else {
       console.log('Formulário inválido!');
     }

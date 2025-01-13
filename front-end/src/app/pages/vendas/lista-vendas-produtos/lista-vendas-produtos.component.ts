@@ -42,10 +42,10 @@ export class ListaVendasProdutosComponent {
     }
   }
 
-  calcularTotalCompra(): number {
-    return this.listaDeCompras.reduce(
-      (total, item) => total + item.valor_total_item,
-      0
-    );
-  }
+  // calcularTotalCompra(): number {
+  //   return this.listaDeCompras.reduce(
+  //     (total, item) => total + item.valor_total_item,
+  //     0
+  //   );
+  // }
 }

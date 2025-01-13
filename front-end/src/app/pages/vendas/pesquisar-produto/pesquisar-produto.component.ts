@@ -28,7 +28,7 @@ export class PesquisarProdutoComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['produtoSelecionado'] && this.produtoSelecionado === null) {
       // Limpa o inputProduto quando produtoSelecionado for null
-      this.inputProduto = '';
+      this.inputProduto = "";
     }
   }
 

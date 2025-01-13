@@ -45,22 +45,25 @@ export class ModalLoginUsuarioComponent {
   }
 
   efetuarLogin() {
-    if (this.formlogin.valid) {
-      const { login, senha } = this.formlogin.value;
-      const credenciais = { login, senha };
-
-      this.loginService.efetuarLogin(credenciais).subscribe({
-        next: (response) => {
-          localStorage.setItem("token", response.tokenJWT);
-          this.usuario = response.nome;
           this.nomeUsuario.emit(this.usuario);
           this.aoEfetuarLogin.emit();
           this.router.navigateByUrl("/dashboard");
-        },
-        error: (erro) => console.error(erro),
-      });
+    // if (this.formlogin.valid) {
+    //   const { login, senha } = this.formlogin.value;
+    //   const credenciais = { login, senha };
 
-      this.resetFormulario();
-    }
+    //   this.loginService.efetuarLogin(credenciais).subscribe({
+    //     next: (response) => {
+    //       localStorage.setItem("token", response.tokenJWT);
+    //       this.usuario = response.nome;
+    //       this.nomeUsuario.emit(this.usuario);
+    //       this.aoEfetuarLogin.emit();
+    //       this.router.navigateByUrl("/dashboard");
+    //     },
+    //     error: (erro) => console.error(erro),
+    //   });
+
+    //   this.resetFormulario();
+    // }
   }
 }

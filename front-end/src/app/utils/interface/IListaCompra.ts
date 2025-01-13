@@ -1,4 +1,4 @@
-import { Produto, ProdutoSimplificado } from "./IProduto";
+import { ProdutoSimplificado } from "./IProduto";
 
 
 

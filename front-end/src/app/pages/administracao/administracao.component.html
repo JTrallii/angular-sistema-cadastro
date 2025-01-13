@@ -1,26 +1,30 @@
-
-
-
 <section class="container">
   <h1>ADMINISTRAÇÃO</h1>
   <div class="container__botoes">
     <app-botao-principal
       [color]="texto"
-        [backgroundColor]="botao_listar"
-        [hoverBackgroundColor]="botao_listar_hover"
-        [font_size]="font_size"
-    >CADASTRAR FUNCIONÁRIO</app-botao-principal>
+      [backgroundColor]="botao_listar"
+      [hoverBackgroundColor]="botao_listar_hover"
+      [font_size]="font_size"
+      (onClick)="navegar('cadastrar-funcionario')"
+      >CADASTRAR FUNCIONÁRIO</app-botao-principal
+    >
     <app-botao-principal
       [color]="texto"
-        [backgroundColor]="botao_listar"
-        [hoverBackgroundColor]="botao_listar_hover"
-        [font_size]="font_size"
-    >GERENCIAR FUNCIONÁRIO</app-botao-principal>
+      [backgroundColor]="botao_listar"
+      [hoverBackgroundColor]="botao_listar_hover"
+      [font_size]="font_size"
+      >GERENCIAR FUNCIONÁRIO</app-botao-principal
+    >
     <app-botao-principal
       [color]="texto"
-        [backgroundColor]="botao_listar"
-        [hoverBackgroundColor]="botao_listar_hover"
-        [font_size]="font_size"
-    >CRIAR FUNCIONÁRIO</app-botao-principal>
+      [backgroundColor]="botao_listar"
+      [hoverBackgroundColor]="botao_listar_hover"
+      [font_size]="font_size"
+      >CRIAR FUNCIONÁRIO</app-botao-principal
+    >
+  </div>
+  <div class="container__form">
+    <router-outlet></router-outlet>
   </div>
 </section>
