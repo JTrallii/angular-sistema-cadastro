@@ -1,8 +1,8 @@
 <section class="container">
   <h1>CADASTRO DE CLIENTES</h1>
   <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
-    <div class="container__cliente">
-      <div class="container__cliente__nome">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-12">
         <label class="block" for="cliente">NOME DO CLIENTE:</label>
         <input
           class="input"
@@ -23,8 +23,8 @@
         </div>
       </div>
     </div>
-    <div class="container__documento">
-      <div class="container__documento__cpf">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-6">
         <label class="block" for="cpf">CPF:</label>
         <input
           class="input"
@@ -46,7 +46,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__documento__rg">
+      <div class="container__cadastro__grupo col-6">
         <label class="block" for="rg">RG:</label>
         <input
           class="input"
@@ -69,8 +69,8 @@
         </div>
       </div>
     </div>
-    <div class="container__endereco">
-      <div class="container__endereco__logradouro">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-9">
         <label class="block" for="logradouro">ENDEREÇO:</label>
         <input
           class="input"
@@ -92,7 +92,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__endereco__numero">
+      <div class="container__cadastro__grupo col-3">
         <label class="block" for="numero">NÚMERO:</label>
         <input
           class="input"
@@ -110,8 +110,8 @@
         </div>
       </div>
     </div>
-    <div class="container__endereco">
-      <div class="container__endereco__complemento">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-12">
         <label class="block" for="complemento">COMPLEMENTO:</label>
         <input
           class="input"
@@ -134,8 +134,8 @@
         </div>
       </div>
     </div>
-    <div class="container__endereco">
-      <div class="container__endereco__cep">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-3">
         <label class="block" for="cep">CEP:</label>
         <input
           class="input"
@@ -164,7 +164,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__endereco__bairro">
+      <div class="container__cadastro__grupo col-3">
         <label class="block" for="bairro">BAIRRO:</label>
         <input
           class="input"
@@ -183,7 +183,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__endereco__cidade">
+      <div class="container__cadastro__grupo col-3">
         <label class="block" for="cidade">CIDADE:</label>
         <input
           class="input"
@@ -202,7 +202,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__endereco__uf">
+      <div class="container__cadastro__grupo col-3">
         <label class="block" for="uf">UF:</label>
         <input
           class="input"
@@ -227,8 +227,8 @@
         </div>
       </div>
     </div>
-    <div class="container__contato">
-      <div class="container__contato__celular">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-6">
         <label class="block" for="celular">CELULAR:</label>
         <input
           class="input"
@@ -250,7 +250,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__contato__telefone">
+      <div class="container__cadastro__grupo col-6">
         <label class="block" for="telefone">TELEFONE:</label>
         <input
           class="input"
@@ -271,8 +271,8 @@
         </div>
       </div>
     </div>
-    <div class="container__contato">
-      <div class="container__contato__email1">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-6">
         <label class="block" for="email1">EMAIL 1:</label>
         <input
           class="input"
@@ -292,7 +292,7 @@
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__contato__email2">
+      <div class="container__cadastro__grupo  col-6">
         <label class="block" for="email2">EMAIL 2:</label>
         <input
           class="input"
@@ -309,26 +309,10 @@
         </div>
       </div>
     </div>
-
     <div class="container__botoes">
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="salvar"
-        [hoverBackgroundColor]="salvar_hover"
-        >SALVAR</app-botao-principal
-      >
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="atualizar"
-        [hoverBackgroundColor]="atualizar_hover"
-        >ATUALIZAR</app-botao-principal
-      >
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="excluir"
-        [hoverBackgroundColor]="excluir_hover"
-        >EXCLUIR</app-botao-principal
-      >
+      <button>SALVAR</button>
+      <button>ATUALIZAR</button>
+      <button>EXCLUIR</button>
     </div>
   </form>
 </section>

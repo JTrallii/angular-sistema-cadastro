@@ -9,18 +9,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './botao-principal.component.scss',
 })
 export class BotaoPrincipalComponent {
-  @Input() color: string = "white";
-  @Input() backgroundColor: string = "blue";
-  @Input() fontSize: string = "16px";
-  @Input() hoverColor: string = "white";
-  @Input() hoverBackgroundColor: string = "darkblue";
+  hoverOn: boolean = false;
+  @Input() texto: string = "#ffffff"
+  @Input() color: string = "#47a138";
+  @Input() backgroundColor: string = "#267c17";
+  @Input() font_size: string = "16px";
+  @Input() hoverColor: string = "#47a138";
+  @Input() hoverBackgroundColor: string = "#267c17";
   @Input() borda: string = "none";
   @Input() marginLeft: string = "0px";
-  @Input() font_size: string = "1rem";
   @Output() onClick = new EventEmitter<void>();
-
 
   emitClick() {
     this.onClick.emit();
   }
 }
+

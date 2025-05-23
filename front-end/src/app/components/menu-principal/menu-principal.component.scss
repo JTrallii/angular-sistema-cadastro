@@ -5,7 +5,8 @@
 .container {
   width: 300px;
   height: 100%;
-  background-color: $cor-branco;
+  background-color: #1F2937;
+  font-family: "Inter", sans-serif;
 
   &__navegacao__lista {
     display: flex;
@@ -16,20 +17,22 @@
     &__link {
       text-decoration: none;
       font-size: 1.6rem;
-      color: $cor-azul-meia-noite;
-      font-weight: 900;
-      padding: 0.8rem;
-      transition: 0.4s;
+      color: #f3f4f6;
+      font-weight: 600;
+      padding: 0.6rem 1rem;
+      transition: background-color 0.3s ease;
+      font-family: "Inter", "Segoe UI", sans-serif;
 
       &:hover {
         color: $cor-branco;
-        background-color: $cor-azul-meia-noite;
+        background-color: #374151;
       }
     }
   }
 }
 
 .ativo {
-  color: $cor-branco;
-  background-color: $cor-azul-meia-noite;
+  background-color: #111827;
+  border-left: 4px solid #3b82f6; /* Azul destaque */
+  background-color: #374151;
 }

@@ -20,9 +20,9 @@ import { BotaoPrincipalComponent } from "../../components/botao-principal/botao-
   styleUrl: './vendas.component.scss',
 })
 export class VendasComponent {
-  texto: "#ffffff" = "#ffffff";
-  salvar: "#47a138" = "#47a138";
-  salvar_hover: "#267c17" = "#267c17";
+  texto: string = "#ffffff";
+  salvar: string = "#47a138";
+  salvar_hover: string = "#267c17";
   botao_listar: string = "#17202a";
   botao_listar_hover: string = "#0c1116";
   font_size: string = "1.2rem";

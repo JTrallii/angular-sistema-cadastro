@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalLoginUsuarioComponent } from "../modal-login-usuario/modal-login-usuario.component";
-import { ModalCadastroUsuarioComponent } from "../modal-cadastro-usuario/modal-cadastro-usuario.component";
+import { ModalLoginUsuarioComponent } from '../modal-login-usuario/modal-login-usuario.component';
+import { ModalCadastroUsuarioComponent } from '../modal-cadastro-usuario/modal-cadastro-usuario.component';
 import { CommonModule } from '@angular/common';
-import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.component";
-
+import { BotaoPrincipalComponent } from '../botao-principal/botao-principal.component';
 
 @Component({
   selector: 'app-header',
@@ -13,28 +12,35 @@ import { BotaoPrincipalComponent } from "../botao-principal/botao-principal.comp
     CommonModule,
     ModalLoginUsuarioComponent,
     ModalCadastroUsuarioComponent,
-    BotaoPrincipalComponent
-],
+    BotaoPrincipalComponent,
+  ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit {
   @Output() loginEfetuado = new EventEmitter<boolean>();
 
   modalLoginUsuario = false;
   modalCadastroUsuario = false;
-  usuario = "";
+  usuario = '';
   usuarioLogado = false;
-  login = "login";
-  cadastro = "cadastro"
-  branco: "#ecf0f1" = "#ecf0f1"; // Define explicitamente o tipo literal
-  verde: "#47a138" = "#47a138"; // Define explicitamente o tipo literal
-  preto = "#17202a"
-  transparente: "transparent" = "transparent";
-  font_size: "1.3rem" = "1.3rem";
-  borda: "3px solid #47a138" = "3px solid #47a138";
-  marginLeft: string = "1rem";
+  login = 'login';
+  cadastro = 'cadastro';
+  branco: string = '#ecf0f1'; // Define explicitamente o tipo literal
+  verde: string = '#47a138'; // Define explicitamente o tipo literal
+  preto: string = '#17202a';
+  transparente: string = 'transparent';
+  font_size: string = '1.3rem';
+  borda: string = '3px solid #47a138';
+  marginLeft: string = '1rem';
+
+  ngOnInit(): void {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.usuarioLogado = true;
+      this.loginEfetuado.emit(true);
+    }
+  }
 
   constructor(private router: Router) {}
 
@@ -57,6 +63,7 @@ export class HeaderComponent {
   aoEfetuarLogin() {
     this.modalLoginUsuario = false;
     this.usuarioLogado = true;
+    localStorage.setItem('token', 'true'); // ou o valor real do token se houver
     this.loginEfetuado.emit(true);
     this.router.navigate(['/dashboard']);
   }
@@ -64,7 +71,7 @@ export class HeaderComponent {
   aoEfetuarLogout() {
     this.usuarioLogado = false;
     this.loginEfetuado.emit(false);
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
 

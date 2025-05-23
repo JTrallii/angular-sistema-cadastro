@@ -1,102 +1,105 @@
 <section class="container">
   <h1>CADASTRO DE PRODUTOS</h1>
-  <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
-    <div class="container__produto">
-      <div class="container__produto__nome">
+  <div class="container__botoes">
+    <button>ATUALIZAR PRODUTOS</button>
+    <button>EXCLUIR PRODUTOS</button>
+  </div>
+  <form action="" class="" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-12">
         <label for="produto">PRODUTO:</label>
-        <input
-          type="text"
-          name="produto"
-          ngModel
-          required
-          minlength="3"
-          #produto="ngModel"
-        />
-        <div *ngIf="(produto?.invalid && produto?.touched) || produto?.dirty">
-          <app-mensagem-erro-validacao *ngIf="produto?.errors?.['required']">
+        <input type="text" formControlName="produto" required minlength="3" />
+        <div
+          *ngIf="
+            (produtoForm.get('produto')?.invalid &&
+              produtoForm.get('produto')?.touched) ||
+            produtoForm.get('produto')?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('produto')?.errors?.['required']"
+          >
             O nome do produto precisa ser cadastrado!
           </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="produto?.errors?.['minlength']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('produto')?.errors?.['minlength']"
+          >
             O nome do produto precisa ter pelo menos 3 caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
     </div>
-    <div class="container__produto">
-      <div class="container__produto__cdg_barras_caixa">
-        <label for="cdg_barras_caixa">CODIGO DE BARRAS DA CAIXA:</label>
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-4">
+        <label for="cdg_barras_primeiro">CODIGO DE BARRAS 1:</label>
         <input
           type="text"
-          name="cdg_barras_caixa"
-          ngModel
-          #cdg_barras_caixa="ngModel"
+          formControlName="cdg_barras_primeiro"
           pattern="^\d{7,13}$"
           maxlength="13"
         />
         <div
           *ngIf="
-            (cdg_barras_caixa?.invalid && cdg_barras_caixa?.touched) ||
-            cdg_barras_caixa?.dirty
+            (produtoForm.get('cdg_barras_primeiro')?.invalid &&
+              produtoForm.get('cdg_barras_primeiro')?.touched) ||
+            produtoForm.get('cdg_barras_primeiro')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="cdg_barras_caixa?.errors?.['pattern']"
+            *ngIf="produtoForm.get('cdg_barras_primeiro')?.errors?.['pattern']"
           >
             O código de barras precisa ser em números e ter de 7 a 13
             caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__cdg_barras_produto">
-        <label for="cdg_barras_produto">CODIGO DE BARRAS DO PRODUTO:</label>
+      <div class="container__cadastro__grupo col-4">
+        <label for="cdg_barras_segundo">CODIGO DE BARRAS 2:</label>
         <input
           type="text"
-          name="cdg_barras_produto"
-          ngModel
-          #cdg_barras_produto="ngModel"
+          formControlName="cdg_barras_segundo"
           required
           pattern="^\d{7,13}$"
           maxlength="13"
         />
         <div
           *ngIf="
-            (cdg_barras_produto?.invalid && cdg_barras_produto?.touched) ||
-            cdg_barras_produto?.dirty
+            (produtoForm.get('cdg_barras_segundo')?.invalid &&
+              produtoForm.get('cdg_barras_segundo')?.touched) ||
+            produtoForm.get('cdg_barras_segundo')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="cdg_barras_produto?.errors?.['required']"
+            *ngIf="produtoForm.get('cdg_barras_segundo')?.errors?.['required']"
           >
             O código de barras precisa ser cadastrado!
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao
-            *ngIf="cdg_barras_produto?.errors?.['pattern']"
+            *ngIf="produtoForm.get('cdg_barras_segundo')?.errors?.['pattern']"
           >
             O código de barras precisa ser em números e ter de 7 a 13
             caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__cdg_barras_secundario">
-        <label for="cdg_barras_secundario">CODIGO DE BARRAS SECUNDÁRIO:</label>
+      <div class="container__cadastro__grupo col-4">
+        <label for="cdg_barras_terceiro">CODIGO DE BARRAS 3:</label>
         <input
           type="text"
-          name="cdg_barras_secundario"
-          ngModel
-          #cdg_barras_secundario="ngModel"
+          formControlName="cdg_barras_terceiro"
           pattern="^\d{7,13}$"
           maxlength="13"
         />
         <div
           *ngIf="
-            (cdg_barras_secundario?.invalid &&
-              cdg_barras_secundario?.touched) ||
-            cdg_barras_secundario?.dirty
+            (produtoForm.get('cdg_barras_terceiro')?.invalid &&
+              produtoForm.get('cdg_barras_terceiro')?.touched) ||
+            produtoForm.get('cdg_barras_terceiro')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="cdg_barras_secundario?.errors?.['pattern']"
+            *ngIf="produtoForm.get('cdg_barras_terceiro')?.errors?.['pattern']"
           >
             O código de barras precisa ser em números e ter de 7 a 13
             caracteres!
@@ -104,257 +107,284 @@
         </div>
       </div>
     </div>
-    <div class="container__produto">
-      <div class="container__produto__fornecedor">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-9">
         <label for="fornecedor">FORNECEDOR:</label>
         <input
           type="text"
-          name="fornecedor"
-          ngModel
+          formControlName="fornecedor"
           required
           minlength="3"
-          #fornecedor="ngModel"
         />
         <div
           *ngIf="
-            (fornecedor?.invalid && fornecedor?.touched) || fornecedor?.dirty
+            (produtoForm.get('fornecedor')?.invalid &&
+              produtoForm.get('fornecedor')?.touched) ||
+            produtoForm.get('fornecedor')?.dirty
           "
         >
-          <app-mensagem-erro-validacao *ngIf="fornecedor?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('fornecedor')?.errors?.['required']"
+          >
             O nome do fornecedor precisa ser cadastrado!
           </app-mensagem-erro-validacao>
           <app-mensagem-erro-validacao
-            *ngIf="fornecedor?.errors?.['minlength']"
+            *ngIf="produtoForm.get('fornecedor')?.errors?.['minlength']"
           >
             O nome do fornecedor precisa ter pelo menos 3 caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__sku">
+      <div class="container__cadastro__grupo col-3">
         <label for="sku">SKU:</label>
         <input
           type="text"
-          name="sku"
-          ngModel
+          formControlName="sku"
           minlength="1"
-          #sku="ngModel"
           pattern="^[A-Za-z]+$"
         />
-        <div *ngIf="(sku?.invalid && sku?.touched) || sku?.dirty">
-          <app-mensagem-erro-validacao *ngIf="sku?.errors?.['minlength']">
+        <div
+          *ngIf="
+            (produtoForm.get('sku')?.invalid &&
+              produtoForm.get('sku')?.touched) ||
+            produtoForm.get('sku')?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('sku')?.errors?.['minlength']"
+          >
             O SKU precisa ter pelo menos 1 caracteres!
           </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="sku?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('sku')?.errors?.['pattern']"
+          >
             O SKU precisa ser apenas caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
     </div>
-    <div class="container__produto">
-      <div class="container__produto__estoque_minimo">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-4">
         <label for="estoque_minimo">ESTOQUE MÍNIMO:</label>
         <input
           type="text"
-          name="estoque_minimo"
-          ngModel
+          formControlName="estoque_minimo"
           required
-          #estoque_minimo="ngModel"
           pattern="^\d{1,9}$"
           maxlength="9"
         />
         <div
           *ngIf="
-            (estoque_minimo?.invalid && estoque_minimo?.touched) ||
-            estoque_minimo?.dirty
+            (produtoForm.get('estoque_minimo')?.invalid &&
+              produtoForm.get('estoque_minimo')?.touched) ||
+            produtoForm.get('estoque_minimo')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="estoque_minimo?.errors?.['required']"
+            *ngIf="produtoForm.get('estoque_minimo')?.errors?.['required']"
           >
             A quantidade mínima precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao
-            *ngIf="estoque_minimo?.errors?.['pattern']"
+            *ngIf="produtoForm.get('estoque_minimo')?.errors?.['pattern']"
           >
             A quantidade mínima precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__estoque">
+      <div class="container__cadastro__grupo col-4">
         <label for="estoque">ESTOQUE:</label>
         <input
           type="text"
-          name="estoque"
-          ngModel
+          formControlName="estoque"
           required
-          #estoque="ngModel"
           maxlength="9"
           pattern="^\d{1,9}$"
         />
-        <div *ngIf="(estoque?.invalid && estoque?.touched) || estoque?.dirty">
-          <app-mensagem-erro-validacao *ngIf="estoque?.errors?.['required']">
+        <div
+          *ngIf="
+            (produtoForm.get('estoque')?.invalid &&
+              produtoForm.get('estoque')?.touched) ||
+            produtoForm.get('estoque')?.dirty
+          "
+        >
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('estoque')?.errors?.['required']"
+          >
             A estoque precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="estoque?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('estoque')?.errors?.['pattern']"
+          >
             A estoque precisa ser númerico !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__categoria">
+      <div class="container__cadastro__grupo col-4">
         <label for="categoria_produto">CATEGORIA:</label>
-        <input
-          type="text"
-          name="categoria_produto"
-          ngModel
-          required
-          #categoria_produto="ngModel"
-        />
+        <input type="text" formControlName="categoria_produto" required />
         <div
           *ngIf="
-            (categoria_produto?.invalid && categoria_produto?.touched) ||
-            categoria_produto?.dirty
+            (produtoForm.get('categoria_produto')?.invalid &&
+              produtoForm.get('categoria_produto')?.touched) ||
+            produtoForm.get('categoria_produto')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="categoria_produto?.errors?.['required']"
+            *ngIf="produtoForm.get('categoria_produto')?.errors?.['required']"
           >
             A categoria precisa ser cadastrada !
           </app-mensagem-erro-validacao>
         </div>
       </div>
     </div>
-    <div class="container__produto">
-      <div class="container__produto__preco_compra">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-3">
         <label for="preco_compra">PREÇO DE COMPRA:</label>
         <input
           type="text"
-          name="preco_compra"
-          ngModel
+          formControlName="preco_compra"
           required
-          #preco_compra="ngModel"
           pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})$"
         />
         <div
           *ngIf="
-            (preco_compra?.invalid && preco_compra?.touched) ||
-            preco_compra?.dirty
+            (produtoForm.get('preco_compra')?.invalid &&
+              produtoForm.get('preco_compra')?.touched) ||
+            produtoForm.get('preco_compra')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="preco_compra?.errors?.['required']"
+            *ngIf="produtoForm.get('preco_compra')?.errors?.['required']"
           >
             O preço de compra precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao
-            *ngIf="preco_compra?.errors?.['pattern']"
+            *ngIf="produtoForm.get('preco_compra')?.errors?.['pattern']"
           >
             O preço de compra precisa ser númerico e seguir o exemplo: 1.525,00
             !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__preco_venda">
+      <div class="container__cadastro__grupo col-3">
         <label for="preco_venda">PREÇO DE VENDA:</label>
         <input
           type="text"
-          name="preco_venda"
-          ngModel
+          formControlName="preco_venda"
           required
-          #preco_venda="ngModel"
           pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})?$"
         />
         <div
           *ngIf="
-            (preco_venda?.invalid && preco_venda?.touched) || preco_venda?.dirty
+            (produtoForm.get('preco_venda')?.invalid &&
+              produtoForm.get('preco_venda')?.touched) ||
+            produtoForm.get('preco_venda')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="preco_venda?.errors?.['required']"
+            *ngIf="produtoForm.get('preco_venda')?.errors?.['required']"
           >
             O preço de venda precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="preco_venda?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('preco_venda')?.errors?.['pattern']"
+          >
             O preço de venda precisa ser númerico e seguir o exemplo: 1.525,00 !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__preco_medio">
+      <div class="container__cadastro__grupo col-3">
         <label for="preco_medio">PREÇO MÉDIO:</label>
         <input
           type="text"
-          name="preco_medio"
-          ngModel
+          formControlName="preco_medio"
           readonly
-          #preco_medio="ngModel"
           pattern="^\d{1,3}(?:\.\d{3})*(,\d{2})?$"
         />
         <div
           *ngIf="
-            (preco_medio?.invalid && preco_medio?.touched) || preco_medio?.dirty
+            (produtoForm.get('preco_medio')?.invalid &&
+              produtoForm.get('preco_medio')?.touched) ||
+            produtoForm.get('preco_medio')?.dirty
           "
         >
           <app-mensagem-erro-validacao
-            *ngIf="preco_medio?.errors?.['required']"
+            *ngIf="produtoForm.get('preco_medio')?.errors?.['required']"
           >
             O custo de medio precisa ser cadastrado !
           </app-mensagem-erro-validacao>
 
-          <app-mensagem-erro-validacao *ngIf="preco_medio?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('preco_medio')?.errors?.['pattern']"
+          >
             O custo de medio precisa ser númerico e seguir o exemplo: 1.525,00 !
           </app-mensagem-erro-validacao>
         </div>
       </div>
-      <div class="container__produto__und_medida">
+      <div class="container__cadastro__grupo col-3">
         <label for="und_medida">UN. DE MEDIDA:</label>
         <input
           type="text"
-          name="und_medida"
-          ngModel
+          formControlName="und_medida"
           required
           minlength="1"
-          #un_medida="ngModel"
           pattern="^[A-Za-z]+$"
         />
         <div
-          *ngIf="(un_medida?.invalid && un_medida?.touched) || un_medida?.dirty"
+          *ngIf="
+            (produtoForm.get('un_medida')?.invalid &&
+              produtoForm.get('un_medida')?.touched) ||
+            produtoForm.get('un_medida')?.dirty
+          "
         >
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('un_medida')?.errors?.['required']"
+          >
             A unidade de medida precisa ser cadastrado!
           </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['minlength']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('un_medida')?.errors?.['minlength']"
+          >
             A unidade de medida precisa ter pelo menos 1 caracteres!
           </app-mensagem-erro-validacao>
-          <app-mensagem-erro-validacao *ngIf="un_medida?.errors?.['pattern']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('un_medida')?.errors?.['pattern']"
+          >
             A unidade de medida precisa ser apenas caracteres!
           </app-mensagem-erro-validacao>
         </div>
       </div>
     </div>
-    <div class="container__produto">
-      <div class="container__produto__descricao">
+    <div class="container__cadastro">
+      <div class="container__cadastro__grupo col-12">
         <label for="descricao">DESCRIÇÃO DO PRODUTO:</label>
         <textarea
-          name="descricao"
+          formControlName="descricao"
           id="descricao"
-          ngModel
           required
-          #textarea="ngModel"
           minlength="10"
           maxlength="500"
         ></textarea>
         <div
-          *ngIf="(textarea?.invalid && textarea?.touched) || textarea?.dirty"
+          *ngIf="
+            (produtoForm.get('textarea')?.invalid &&
+              produtoForm.get('textarea')?.touched) ||
+            produtoForm.get('textarea')?.dirty
+          "
         >
-          <app-mensagem-erro-validacao *ngIf="textarea?.errors?.['required']">
+          <app-mensagem-erro-validacao
+            *ngIf="produtoForm.get('textarea')?.errors?.['required']"
+          >
             Deve ser cadastrado uma descrição básica para o produto !
           </app-mensagem-erro-validacao>
 
           <app-mensagem-erro-validacao
-            *ngIf="textarea?.errors?.['minlength'] || textarea?.errors?.['maxlength']"
+            *ngIf="produtoForm.get('textarea')?.errors?.['minlength'] || produtoForm.get('textarea')?.errors?.['maxlength']"
           >
             A descrição do produto precisa ter um mínimo de 10 e máximo de 500
             caracteres !
@@ -364,31 +394,9 @@
     </div>
 
     <div class="container__botoes">
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="salvar"
-        [hoverBackgroundColor]="salvar_hover"
-        >SALVAR</app-botao-principal
-      >
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="atualizar"
-        [hoverBackgroundColor]="atualizar_hover"
-        >ATUALIZAR</app-botao-principal
-      >
-      <app-botao-principal
-        [color]="texto"
-        [backgroundColor]="excluir"
-        [hoverBackgroundColor]="excluir_hover"
-        >EXCLUIR</app-botao-principal
-      >
+      <button>SALVAR</button>
+      <button>ATUALIZAR</button>
+      <button>EXCLUIR</button>
     </div>
   </form>
-  <app-botao-principal
-    [color]="texto"
-    [backgroundColor]="excluir"
-    [hoverBackgroundColor]="excluir_hover"
-    (onClick)="listarTodosProdutos()"
-    >EXCLUIR</app-botao-principal
-  >
 </section>
