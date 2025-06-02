@@ -1,69 +1,62 @@
 <section *ngIf="aberta">
   <div class="container">
     <div
-      class="container__background__modal"
+      class="container__modal"
       (click)="aoFechar.emit()"
       aria-hidden="true"
     ></div>
-    <div class="container__janela_modal">
-      <h1>FINALIZANDO VENDAS - PAGAMENTOS</h1>
-      <button
-        class="container__janela_modal__botao_fechar"
-        (click)="aoFechar.emit()"
-      >
+    <div class="container__janela">
+      <h1>FINALIZAR VENDAS - PAGAMENTOS</h1>
+      <button class="container__janela__fechar" (click)="aoFechar.emit()">
         X
       </button>
-      <div class="container__janela_modal__pagamentos">
-        <div class="container__janela_modal__pagamentos__total">
-          <h3 class="container__janela_modal__pagamentos__total__titulo">
-            ADICIONAR DESCONTO
-          </h3>
-          <div>
-            <label for="vendas">DESCONTO:</label>
-            <input type="number" name="vendas" id="vendas" />
-          </div>
-          <div>
+      <div class="pagamentos">
+        <div class="pagamentos__grid">
+          <h3>VALORES</h3>
+          <div class="pagamentos__grid__campo">
             <label for="valor_total">VALOR TOTAL:</label>
-            <input type="number" name="valor_total" id="valor_total" readonly />
+            <input type="text" name="valor_total" id="valor_total" readonly />
           </div>
-          <div>
-            <label for="despesas">DESPESAS:</label>
-            <input type="number" name="despesas" id="despesas" readonly />
+          <div class="pagamentos__grid__campo">
+            <label for="vendas">DESCONTO:</label>
+            <input type="text" name="vendas" id="vendas" />
           </div>
-          <div>
+          <div class="pagamentos__grid__campo">
             <label for="pagamentos">PAGAMENTO:</label>
-            <input type="number" name="pagamentos" id="pagamentos" readonly />
+            <input type="text" name="pagamentos" id="pagamentos" />
           </div>
-          <div>
+          <div class="pagamentos__grid__campo">
             <label for="troco">TROCO:</label>
-            <input type="number" name="troco" id="troco" readonly />
+            <input type="text" name="troco" id="troco" readonly />
           </div>
         </div>
-        <div class="container__janela_modal__pagamentos__opcoes">
-          <h3 class="container__janela_modal__pagamentos__opcoes__titulo">
-            ADICIONAR FORMAS DE PAGAMENTO
-          </h3>
-          <h2 class="container__janela_modal__pagamentos__opcoes__subtitulo">
-            FORMA DE PAGAMENTO:
-          </h2>
-          <ul>
-            <li
-              *ngFor="let forma of formasDePagamento"
-              (click)="selecionarForma(forma)"
-              [ngClass]="{ ativo: formaPagamentoSelecionada === forma }"
-            >
-              {{ forma }}
-            </li>
-          </ul>
+        <div class="pagamentos__grid">
+          <h3>FORMAS DE PAGAMENTO</h3>
+          <div class="pagamentos__grid__campo">
+            <ul>
+              <li
+                *ngFor="let forma of formasDePagamento"
+                (click)="selecionarForma(forma)"
+                [ngClass]="{ ativo: formaPagamentoSelecionada === forma }"
+              >
+                {{ forma }}
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="container__janela_modal__pagamentos__valores">
-          <h3 class="container__janela_modal__pagamentos__valores__titulo">
-            VALOR DO PAGAMENTO
-          </h3>
-          <h4>VALOR TOTAL A PAGAR:</h4>
-          <input type="text" name="total_a_pagar" id="total_a_pagar" readonly>
-          <h4>FORMA DE PAGAMENTO SELECIONADA:</h4>
-          <h4>{{ formaPagamentoSelecionada }}</h4>
+        <div class="pagamentos__grid">
+          <h3>VALOR DO PAGAMENTO</h3>
+          <div class="pagamentos__grid__campo terceira-coluna">
+            <label>VALOR TOTAL A PAGAR:</label>
+            <input
+              type="text"
+              name="total_a_pagar"
+              id="total_a_pagar"
+              readonly
+            />
+            <label>FORMA DE PAGAMENTO SELECIONADA:</label>
+            <span *ngIf="formaPagamentoSelecionada">{{ formaPagamentoSelecionada }}</span>
+          </div>
         </div>
       </div>
     </div>

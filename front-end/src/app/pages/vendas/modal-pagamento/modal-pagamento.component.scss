@@ -5,7 +5,7 @@
 .container {
   user-select: none; // Impede a seleção de texto
 
-  &__background__modal {
+  &__modal {
     position: fixed;
     z-index: 1;
     left: 0px;
@@ -15,7 +15,7 @@
     background: rgba(101, 101, 101, 0.85);
   }
 
-  &__janela_modal {
+  &__janela {
     position: fixed;
     z-index: 1;
     padding: 32px;
@@ -32,7 +32,7 @@
       font-weight: 900;
     }
 
-    &__botao_fechar {
+    &__fechar {
       background: $cor-azul-meia-noite;
       position: absolute;
       padding: 0.5rem;
@@ -44,106 +44,79 @@
       right: 22px;
       top: 22px;
     }
+  }
+}
 
-    &__pagamentos {
+.pagamentos {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* 25% / 50% / 25% */
+  gap: 1.5rem;
+  flex-direction: row;
+  margin-top: 1rem;
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid $cor-azul-meia-noite;
+    padding: 0.5rem;
+    background-color: $cor-branco;
+
+    h3 {
+      text-align: center;
+      padding: 1rem;
+      background-color: $cor-azul-meia-noite;
+      color: $cor-branco;
+      border-radius: 8px;
+      box-sizing: border-box;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    &__campo {
       display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1rem;
+      flex-direction: column;
 
-      &__total,
-      &__opcoes,
-      &__valores {
-        border: 2px solid $cor-azul-meia-noite;
-        padding: 0.5rem;
-        text-align: left;
-        height: 300px;
-        background-color: $cor-branco;
-        font-size: 1.3rem;
+      label {
+        font-size: 1.1rem;
+        font-weight: 400;
+      }
 
-        &__titulo {
+      input {
+        margin: 0.2rem 0;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      li {
+        font-weight: 400;
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        cursor: pointer;
+
+        &.ativo {
           background-color: $cor-azul-meia-noite;
           color: $cor-branco;
-          padding: 0.8rem;
-          border-radius: 8px;
-          width: 100%;
-          box-sizing: border-box;
-          text-align: center;
-          margin-bottom: 0.5rem;
-        }
-
-        &__subtitulo {
-          font-size: 1.1rem;
-          font-weight: 900;
-          margin-bottom: 0.5rem;
-        }
-
-        li {
-          font-weight: 900;
-          font-size: 1.1rem;
-          margin-bottom: 0.3rem;
-        }
-
-        label,
-        input {
-          font-size: 1.3rem;
-          margin: 0.2rem 0;
-          border: none;
-        }
-
-        div {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 0.2rem;
-
-          input {
-            width: 40%;
-          }
+          font-weight: bold;
+          padding: 0.5rem;
         }
       }
 
-      &__total,
-      &__valores {
-        width: 25%;
-      }
-
-      &__opcoes {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        ul {
-
-          li {
-            cursor: pointer;
-
-            &.ativo {
-              background-color: $cor-azul-meia-noite;
-              color: $cor-branco;
-              font-weight: bold;
-              padding: 0.5rem;
-            }
-          }
-        }
-
-
-      }
-
-      &__valores {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-
-        h4 {
-          font-size: 0.9rem;
-          font-weight: 900;
-        }
+      span {
+        background-color: $cor-azul-meia-noite;
+        color: $cor-branco;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        padding: 0.3rem;
       }
     }
   }
 }
+
+.terceira-coluna {
+  margin-top: 1rem;
+}
+
