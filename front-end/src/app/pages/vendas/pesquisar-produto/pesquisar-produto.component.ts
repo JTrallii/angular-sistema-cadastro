@@ -1,14 +1,17 @@
+import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output, SimpleChanges } from "@angular/core";
 import { Produto } from "../../../utils/interface/IProduto";
 import { FormsModule } from "@angular/forms";
+
 
 @Component({
   selector: 'app-pesquisar-produto',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   templateUrl: './pesquisar-produto.component.html',
   styleUrl: './pesquisar-produto.component.scss'

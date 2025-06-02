@@ -1,18 +1,26 @@
 
 
 
-<div class="container">
-  <label for="produto">PRODUTO</label>
-  <input
-    type="text"
-    id="produto"
-    [(ngModel)]="inputProduto"
-    (input)="onInputChange()"
-    placeholder="Digite o nome do produto..."
-  />
 
+
+
+<div class="container">
+  <div class="input-wrapper">
+    <label for="produto">PRODUTO</label>
+    <input
+      type="text"
+      id="produto"
+      [(ngModel)]="inputProduto"
+      (input)="onInputChange()"
+      placeholder="Digite o nome do produto..."
+    />
+    <mat-icon class="search-icon">search</mat-icon>
+  </div>
   <ul *ngIf="produtosFiltrados.length > 0" class="container__lista">
-    <li *ngFor="let produto of produtosFiltrados" (click)="selecionarProduto(produto)">
+    <li
+      *ngFor="let produto of produtosFiltrados"
+      (click)="selecionarProduto(produto)"
+    >
       {{ produto.nome }}
     </li>
   </ul>

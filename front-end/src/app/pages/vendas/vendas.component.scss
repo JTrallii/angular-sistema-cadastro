@@ -5,10 +5,6 @@
 .container {
   width: 100%;
 
-  &__botao {
-    margin-top: 1rem;
-  }
-
   h1 {
     font-size: 2rem;
     font-weight: 900;
@@ -17,8 +13,8 @@
 
   &__botao {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 32px;
+    margin: 1rem 0;
   }
 
   &__vendas {

@@ -1,5 +1,9 @@
 <section class="container">
   <h1>CADASTRO DE FORNECEDORES</h1>
+  <div class="container__botoes">
+    <button class="btn">ATUALIZAR FORNECEDOR</button>
+    <button class="btn">EXCLUIR FORNECEDOR</button>
+  </div>
   <form action="" class="" #form="ngForm" (ngSubmit)="cadastrar(form)">
     <div class="container__cadastro">
       <div class="container__cadastro__grupo col-12">
@@ -356,9 +360,8 @@
       </div>
     </div>
     <div class="container__botoes">
-      <button>SALVAR</button>
-      <button>ATUALIZAR</button>
-      <button>EXCLUIR</button>
+      <button class="btn">SALVAR</button>
+      <button class="btn btn--cancelar">LIMPAR</button>
     </div>
   </form>
 </section>

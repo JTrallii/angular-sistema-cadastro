@@ -2,14 +2,13 @@
 @import "../../../../style/abstract/mixins";
 @import "../../../../style/abstract/variaveis";
 
-
 //:host é usado para aplicar estilos diretamente ao elemento raiz do componente
 :host {
   display: block; /* Necessário para que o Angular reconheça a largura */
   width: 100%;
 }
 
-section h2{
+section h2 {
   font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
@@ -22,24 +21,22 @@ section h2{
   display: flex;
   flex-direction: column;
 
-
   &__table {
     width: 95%;
     text-align: center;
     background-color: $cor-prata-claro;
 
-
-
     &__head {
       font-size: 1.3rem;
-
 
       &__descricao {
         width: 55%;
         padding: 1rem;
       }
 
-      &__quantidade, &__valor_und, &__valor_total {
+      &__quantidade,
+      &__valor_und,
+      &__valor_total {
         width: 15%;
       }
 
@@ -51,18 +48,20 @@ section h2{
       }
     }
 
-    &__body tr:nth-child(odd) {
-        background-color: $cor-cinza-escuro;
-      }
+    &__body tr:nth-child(odd) td {
+      background-color: #4a4a4a;
+      color: #f1f1f1;
+    }
+
+    &__body tr:nth-child(even) td {
+      background-color: #dce0e4;
+      color: #000;
+    }
 
     &__body tr td {
       padding: 0.8rem;
       border-top: 2px solid $cor-azul-meia-noite;
-      color: $cor-azul-meia-noite;
       font-size: 1.2rem;
     }
   }
 }
-
-
-

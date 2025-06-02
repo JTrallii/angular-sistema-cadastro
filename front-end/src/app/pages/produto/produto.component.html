@@ -1,8 +1,8 @@
 <section class="container">
   <h1>CADASTRO DE PRODUTOS</h1>
   <div class="container__botoes">
-    <button>ATUALIZAR PRODUTOS</button>
-    <button>EXCLUIR PRODUTOS</button>
+    <button class="btn">ATUALIZAR PRODUTO</button>
+    <button class="btn">EXCLUIR PRODUTO</button>
   </div>
   <form action="" class="" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
     <div class="container__cadastro">
@@ -394,9 +394,8 @@
     </div>
 
     <div class="container__botoes">
-      <button>SALVAR</button>
-      <button>ATUALIZAR</button>
-      <button>EXCLUIR</button>
+      <button class="btn">SALVAR</button>
+      <button class="btn btn--cancelar">LIMPAR</button>
     </div>
   </form>
 </section>
