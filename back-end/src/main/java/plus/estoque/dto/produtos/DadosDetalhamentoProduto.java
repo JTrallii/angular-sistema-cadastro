@@ -12,6 +12,7 @@ public record DadosDetalhamentoProduto(
 
         Long id,
         String produto,
+        String codigo_interno,
         String codigo_barras,
         Fornecedor fornecedor,
         String descricao,
@@ -30,6 +31,7 @@ public record DadosDetalhamentoProduto(
     public DadosDetalhamentoProduto(Produto produto) {
         this(produto.getId(),
                 produto.getProduto(),
+                produto.getCodigo_interno(),
                 produto.getCodigo_barras(),
                 produto.getFornecedor(),
                 produto.getDescricao(),

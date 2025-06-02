@@ -37,7 +37,10 @@ public class ProdutoService {
         produto.setFornecedor(fornecedor);  // Associando o fornecedor encontrado
 
         produtoRepository.save(produto);
-        return produto;
+        String codigo_interno = String.format("%04d", produto.getId());
+        produto.setCodigo_interno(codigo_interno);
+
+        return produtoRepository.save(produto);
     }
 
     public List<DadosListagemProdutos> listarTodosProdutosAtivos() {

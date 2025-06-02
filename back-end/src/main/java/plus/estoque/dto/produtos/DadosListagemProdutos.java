@@ -7,7 +7,7 @@ import plus.estoque.domain.produtos.enums.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-public record DadosListagemProdutos(
+public record   DadosListagemProdutos(
 
 
         String produto,

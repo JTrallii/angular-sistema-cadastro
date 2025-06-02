@@ -24,6 +24,7 @@ public class Produto {
     private Long id;
     
     private Boolean ativo;
+    private String codigo_interno;
 
     @Column(nullable = false)
     private String produto;
